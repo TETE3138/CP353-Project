@@ -15,6 +15,7 @@ exports.getNotebooks = (req, res, next) => {
 }
 exports.createNotebooks = (req, res, next) => {
     var notebook = new Notebook(req.body);
+    
     console.log(req.body);
     notebook.save((err) => {
            if (err) {
