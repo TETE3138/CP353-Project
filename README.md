@@ -1,7 +1,7 @@
 # CP353-Project
 ## Clone
 ```
-https://github.com/TETE3138/CP353-Project.git
+git clone https://github.com/TETE3138/CP353-Project.git
 ```
 
 ## Run angular (client)
