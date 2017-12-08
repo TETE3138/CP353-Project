@@ -45,7 +45,7 @@ export class SignupComponent implements OnInit {
       console.log(this.username + this.password);
     }
 
-    this.userManagementService.createNewUser(this.username, this.password, isadmin).subscribe((response) => {
+    this.userManagementService.createNewUser(username, password, isadmin).subscribe((response) => {
       this.respone = response;
     });  
   }

@@ -9,7 +9,7 @@ export class UserManagementService {
   constructor(private http:Http) { }
 
   getAllUser(){
-    return this.http.get("/user/getuser").map((res) => res.json());
+    return this.http.get("http://localhost:3000/user/getuser").map((res) => res.json());
     }
     createNewUser(username,password,isadmin){
       
@@ -17,7 +17,7 @@ export class UserManagementService {
           "username":username,
           "password":password
         }     
-        return this.http.post("/user/signup", body)
+        return this.http.post("http://localhost:3000/user/signup", body)
                             .map((res) => res.json());
         }
       
