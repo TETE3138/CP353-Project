@@ -3,14 +3,23 @@
     <div class="field">
         <label>Username</label>
         <input type="text" name="first-name" placeholder="Username" style="width: 300px;" #username>
+        <div class="ui left pointing red basic label">
+            {{usernameError}}
+        </div>
     </div>
     <div class="field">
         <label>Password</label>
         <input type="password" name="last-name" placeholder="Password" style="width: 300px;" #password>
+        <div class="ui left pointing red basic label">
+            {{passwordError}}
+        </div>
     </div>
     <div class="field">
         <label>Confirm Password</label>
         <input type="password" name="last-name" placeholder="Confirm Password" style="width: 300px;">
+        <div class="ui left pointing red basic label">
+            {{confirmPasswordError}}
+        </div>
     </div>
     <div class="field">
         <div class="ui checkbox">
