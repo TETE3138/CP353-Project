@@ -21,3 +21,18 @@ cd server
 npm install
 npm start
 ```
+
+## Run MongoDB
+```
+mongod
+open Robo 3T
+Create Connection CP353-Project localhost port 27017
+Create Database notebookvalue
+Create Database collections notebooks and users
+Copy query file and Run 
+```
+
+## Ref
+```
+https://semantic-ui.com/elements/label.html
+```
