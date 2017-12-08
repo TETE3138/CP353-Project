@@ -7,9 +7,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
 
-  constructor() { }
+  constructor() { 
 
-  ngOnInit() {
   }
 
+  ngOnInit() {
+  
+  }
+
+  private username: string ="";
+  private usernameError: string="";
+  private password: string="";
+  private passwordError: string="";
+  private confirmPassword: string="";
+  private confirmPasswordError: string="";
+  addUser() {
+    if (this.username === "")
+      this.usernameError = "Please enter username."
+    else
+      this.usernameError = ""
+    if (this.password === "")
+      this.passwordError = "Please enter password."
+    else
+      this.passwordError = ""
+    if (this.confirmPassword === "")
+      this.confirmPasswordError = "Please enter password again."
+    else
+      this.confirmPasswordError = ""
+
+
+    if (this.usernameError === "" && this.passwordError === "" && this.confirmPasswordError === ""){
+      console.log(this.username + this.password);
+    }
+  
+  }
 }

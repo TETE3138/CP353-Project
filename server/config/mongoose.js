@@ -19,5 +19,6 @@ module.exports = function () {
     db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
     require('../app/models/notebook.model');
+    require('../app/models/user.model');
     return db;
 } 

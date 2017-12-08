@@ -1,22 +1,37 @@
 <h1 class="ui header">Sign Up</h1>
 <form class="ui form">
-    <div class="field">
-      <label>Username</label>
-      <input type="text" name="first-name" placeholder="Username">
-    </div>
-    <div class="field">
-      <label>Password</label>
-      <input type="text" name="last-name" placeholder="Password">
-    </div>
-    <div class="field">
-        <label>Confirm Password</label>
-        <input type="text" name="last-name" placeholder="Confirm Password">
+  <div class="field">
+    <label>Username</label>
+    <div class="ui pointing below red basic label" *ngIf="usernameError">
+       {{usernameError}}
       </div>
-    <div class="field">
-      <div class="ui checkbox">
-        <input type="checkbox" tabindex="0" class="hidden">
-        <label>I agree to the Terms and Conditions</label>
+    <input type="text" [(ngModel)]="username" name="username" placeholder="Username">
+  </div>
+  <div class="field">
+    <label>Password</label>
+    <div class="ui pointing below red basic label" *ngIf="passwordError">
+        {{passwordError}}
       </div>
+    <input type="text" [(ngModel)]="password"  name="password" placeholder="Password">
+  </div>
+  <div class="field">
+    <label>Confirm Password</label>
+    <div class="ui pointing below red basic label" *ngIf="confirmPasswordError">
+        {{confirmPasswordError}}
+      </div>
+    <input type="text"  [(ngModel)]="confirmPassword"name="confirmPassword" placeholder="Confirm Password">
+  </div>
+  <div class="field">
+    <div class="ui checkbox">
+      <input type="checkbox" tabindex="0" class="hidden">
+      <label>I agree to the Terms and Conditions</label>
     </div>
-    <button class="ui button" type="submit">Submit</button>
-  </form>
+  </div>
+  <!--     <button class="ui button" type="submit">Sign up</button> -->
+  <div class="ui animated green button" tabindex="0" (click)="addUser()">
+    <div class="visible content">Sign Up!</div>
+    <div class="hidden content">
+      <i class="right arrow icon"></i>
+    </div>
+  </div>
+</form>
