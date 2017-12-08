@@ -8,6 +8,7 @@ git clone https://github.com/TETE3138/CP353-Project.git
 ```
 cd client/cp353-project-angular
 npm install
+npm install -g @angular/cli
 ng serve
 ```
 ```
