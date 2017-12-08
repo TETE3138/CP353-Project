@@ -1,5 +1,5 @@
 <h1 class="ui header">Sign Up</h1>
-<form class="ui form">
+<form (submit)="addUser(username.value,password.value)" #f="ngForm" class="ui form">
     <div class="field">
         <label>Username</label>
         <input type="text" name="first-name" placeholder="Username" style="width: 300px;">
@@ -14,7 +14,7 @@
     </div>
     <div class="field">
         <div class="ui checkbox">
-            <input type="checkbox" tabindex="0" class="hidden">
+            <input type="checkbox" tabindex="0" class="hidden" checked>
             <label>I agree to the Terms and Conditions</label>
         </div>
     </div>

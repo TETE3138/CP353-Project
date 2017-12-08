@@ -1,26 +1,45 @@
 import { Component, OnInit } from '@angular/core';
+import { UserManagementService } from '../../services/user-management.service';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
+
 export class SignupComponent implements OnInit {
 
-  constructor() { 
+  //private userList:User[];
+  private respone;
+
+  constructor(private userManagementService:UserManagementService) {
 
   }
 
   ngOnInit() {
-  
+
+    // status isadmin
+    this.status = "admin";
+
+    //this.getAllUser();
+    
   }
 
-  private username: string ="";
-  private usernameError: string="";
-  private password: string="";
-  private passwordError: string="";
-  private confirmPassword: string="";
-  private confirmPasswordError: string="";
+  /*getAllUser(){
+    this.userManagementService.getAllUser().subscribe((response) => {
+    //this.userList = response;
+    })
+  }*/
+
+  private username: string = "";
+  private usernameError: string = "";
+  private password: string = "";
+  private passwordError: string = "";
+  private confirmPassword: string = "";
+  private confirmPasswordError: string = "";
+
+  private status: string;
+
   addUser() {
     if (this.username === "")
       this.usernameError = "Please enter username."
@@ -39,6 +58,10 @@ export class SignupComponent implements OnInit {
     if (this.usernameError === "" && this.passwordError === "" && this.confirmPasswordError === ""){
       console.log(this.username + this.password);
     }
-  
+
+    this.userManagementService.createNewUser(this.username, this.password, this.status).subscribe((response) => {
+      this.respone = response;
+      //this.getAllUser();
+    });  
   }
 }
