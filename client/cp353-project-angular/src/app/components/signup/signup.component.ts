@@ -9,7 +9,6 @@ import { UserManagementService } from '../../services/user-management.service';
 
 export class SignupComponent implements OnInit {
 
-  //private userList:User[];
   private respone;
 
   constructor(private userManagementService:UserManagementService) {
@@ -18,18 +17,7 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
 
-    // status isadmin
-    this.status = "admin";
-
-    //this.getAllUser();
-    
   }
-
-  /*getAllUser(){
-    this.userManagementService.getAllUser().subscribe((response) => {
-    //this.userList = response;
-    })
-  }*/
 
   private username: string = "";
   private usernameError: string = "";
@@ -38,9 +26,7 @@ export class SignupComponent implements OnInit {
   private confirmPassword: string = "";
   private confirmPasswordError: string = "";
 
-  private status: string;
-
-  addUser() {
+  addUser(username, password, isadmin) {
     if (this.username === "")
       this.usernameError = "Please enter username."
     else
@@ -59,9 +45,8 @@ export class SignupComponent implements OnInit {
       console.log(this.username + this.password);
     }
 
-    this.userManagementService.createNewUser(this.username, this.password, this.status).subscribe((response) => {
+    this.userManagementService.createNewUser(this.username, this.password, isadmin).subscribe((response) => {
       this.respone = response;
-      //this.getAllUser();
     });  
   }
 }

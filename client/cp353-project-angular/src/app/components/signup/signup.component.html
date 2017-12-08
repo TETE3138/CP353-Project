@@ -2,11 +2,11 @@
 <form (submit)="addUser(username.value,password.value)" #f="ngForm" class="ui form">
     <div class="field">
         <label>Username</label>
-        <input type="text" name="first-name" placeholder="Username" style="width: 300px;">
+        <input type="text" name="first-name" placeholder="Username" style="width: 300px;" #username>
     </div>
     <div class="field">
         <label>Password</label>
-        <input type="password" name="last-name" placeholder="Password" style="width: 300px;">
+        <input type="password" name="last-name" placeholder="Password" style="width: 300px;" #password>
     </div>
     <div class="field">
         <label>Confirm Password</label>
