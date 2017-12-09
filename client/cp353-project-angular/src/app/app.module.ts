@@ -17,7 +17,7 @@ import { FormsModule } from '@angular/forms'
 import {AuthguardGuard} from './authguard.guard'
 
 export const routes:Routes = [
-  {path: '',canActivate: [AuthguardGuard],component: HomeComponent},
+  {path: '',component: HomeComponent},
   {path: 'home',canActivate: [AuthguardGuard],component: HomeComponent},
   {path: 'aboutus',component: AboutusComponent},
   {path: 'signup',component: SignupComponent},
