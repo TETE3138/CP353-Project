@@ -1,5 +1,5 @@
 <h1 class="ui header">Sign In</h1>
-<form class="ui form">
+<form (submit)="login(username.value,password.value)" class="ui form">
     <div class="field">
         <label>Username</label>
         <input type="text" name="first-name" placeholder="Username" style="width: 250px;">

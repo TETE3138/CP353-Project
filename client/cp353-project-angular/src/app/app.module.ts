@@ -12,6 +12,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { SigninComponent } from './components/signin/signin.component';
 import {UserManagementService} from './services/user-management.service';
 import { GetNotebookService } from './services/getnotebook.service'
+import { LoginService } from './services/login.service';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms'
 import {AuthguardGuard} from './authguard.guard'
@@ -40,7 +41,7 @@ export const routes:Routes = [
     HttpModule,
     FormsModule
   ],
-  providers: [GetNotebookService,UserManagementService,AuthguardGuard],
+  providers: [GetNotebookService,UserManagementService,LoginService,AuthguardGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

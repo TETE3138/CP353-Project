@@ -5,8 +5,7 @@ import 'rxjs/add/operator/map'
 @Injectable()
 export class LoginService {
 
-  private isUserLoggedIn;
-  private username
+  private isUserLoggedIn: boolean;
 
   constructor(private http:Http) {
     this.isUserLoggedIn = false;
@@ -32,7 +31,7 @@ export class LoginService {
       "password": password
     }
 
-    return this.http.post("http://localhost:3000/user/authen", body)
+    return this.http.post("http://localhost:3000/user/login", body)
       .map((res) => res.json());
   }
 }
