@@ -6,7 +6,17 @@ import 'rxjs/add/operator/map'
 @Injectable()
 export class UserManagementService {
 
-  constructor(private http:Http) { }
+  private isCreateSuccess: boolean; //
+
+  constructor(private http:Http) { this.isCreateSuccess = false; } //
+  //
+  setCreateSuccess() {
+    this.isCreateSuccess = true;
+  }
+  //
+  setCreateFailed() {
+    this.isCreateSuccess = false;
+  }
 
   getAllUser(){
     return this.http.get("http://localhost:3000/user/getuser").map((res) => res.json());

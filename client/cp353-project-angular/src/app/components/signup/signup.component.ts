@@ -10,9 +10,9 @@ import { Router } from '@angular/router';
 
 export class SignupComponent implements OnInit {
 
-  private respone;
+  //private respone;
 
-  constructor(private userManagementService:UserManagementService) {
+  constructor(private userManagementService:UserManagementService, private router:Router) {
 
   }
 
@@ -20,36 +20,49 @@ export class SignupComponent implements OnInit {
 
   }
 
-  private username: string = "";
+  /*private username: string = "";
   private usernameError: string = "";
   private password: string = "";
   private passwordError: string = "";
   private confirmPassword: string = "";
-  private confirmPasswordError: string = "";
-  private result_text: string = "";
+  private confirmPasswordError: string = "";*/
+
+  private result_text: string;
+
 
   addUser(username, password, isadmin) {
 
-    if (this.username === "")
-      this.usernameError = "Please enter username."
-    else
-      this.usernameError = ""
-    if (this.password === "")
-      this.passwordError = "Please enter password."
-    else
-      this.passwordError = ""
-    if (this.confirmPassword === "")
-      this.confirmPasswordError = "Please enter password again."
-    else
-      this.confirmPasswordError = ""
-
-
-    if (this.usernameError === "" && this.passwordError === "" && this.confirmPasswordError === ""){
-      console.log(this.username + this.password);
-    }
-
     this.userManagementService.createNewUser(username, password, isadmin).subscribe((response) => {
-      this.respone = response;
+
+        //this.respone = response;
+
+        this.userManagementService.setCreateSuccess();
+        this.router.navigate(['/']);
+        console.log("Success, Account created.");
+      
+
+     
+      /*else {
+        if (this.username === "")
+          this.usernameError = "Please enter username."
+        else
+          this.usernameError = ""
+        if (this.password === "")
+          this.passwordError = "Please enter password."
+        else
+          this.passwordError = ""
+        if (this.confirmPassword === "")
+          this.confirmPasswordError = "Please enter password again."
+        else
+          this.confirmPasswordError = ""
+  
+  
+        if (this.usernameError === "" && this.passwordError === "" && this.confirmPasswordError === ""){
+          console.log(this.username + this.password);
+        }
+      }*/
+
     });
+    return false;
   }
 }
