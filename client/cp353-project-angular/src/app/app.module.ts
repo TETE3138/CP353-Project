@@ -15,7 +15,8 @@ import { GetNotebookService } from './services/getnotebook.service'
 import { LoginService } from './services/login.service';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms'
-import {AuthguardGuard} from './authguard.guard'
+import {AuthguardGuard} from './authguard.guard';
+import { ManagementComponent } from './components/management/management.component'
 
 export const routes:Routes = [
   {path: '',component: HomeComponent},
@@ -33,7 +34,8 @@ export const routes:Routes = [
     FooterComponent,
     HomeComponent,
     SignupComponent,
-    SigninComponent
+    SigninComponent,
+    ManagementComponent
   ],
   imports: [
     BrowserModule,
