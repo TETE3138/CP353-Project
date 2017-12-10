@@ -2,4 +2,5 @@ server/package-lock.json
 server/node_modules
 client/cp353-project-angular/node_modules
 client/cp353-project-angular/package-lock.json
+node_modules
 
