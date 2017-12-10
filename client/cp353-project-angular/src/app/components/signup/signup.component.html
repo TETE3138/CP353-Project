@@ -1,33 +1,36 @@
 <h1 class="ui header">Sign Up</h1>
-<form (submit)="addUser(username.value,password.value)" #f="ngForm" class="ui form">
+<div class="ui success message" *ngIf="isCreateSuccess == true">
+    <i class="close icon"></i>
+    <div class="header">
+        Your user registration was successful.
+    </div>
+    <p>You may now log-in with the username you have chosen</p>
+    <button class="ui green button" (click)="gotoSignin()">Log-in</button>
+</div>
+<form (submit)="addUser(username.value,password.value,confirmpassword.value)" #f="ngForm" class="ui form">
     <div class="field">
         <label>Username</label>
         <input type="text" name="first-name" placeholder="Username" style="width: 300px;" #username>
-        <!--<div class="ui left pointing red basic label">
+        <div class="ui left pointing red basic label" *ngIf="usernameError">
             {{usernameError}}
-        </div>-->
+        </div>
     </div>
     <div class="field">
         <label>Password</label>
         <input type="password" name="last-name" placeholder="Password" style="width: 300px;" #password>
-        <!--<div class="ui left pointing red basic label">
+        <div class="ui left pointing red basic label" *ngIf="passwordError">
             {{passwordError}}
-        </div>-->
+        </div>
     </div>
     <div class="field">
         <label>Confirm Password</label>
-        <input type="password" name="last-name" placeholder="Confirm Password" style="width: 300px;">
-        <!--<div class="ui left pointing red basic label">
+        <input type="password" name="last-name" placeholder="Confirm Password" style="width: 300px;" #confirmpassword>
+        <div class="ui left pointing red basic label" *ngIf="confirmPasswordError">
             {{confirmPasswordError}}
-        </div>-->
-    </div>
-    <div class="field">
-        <div class="ui checkbox">
-            <input type="checkbox" tabindex="0" class="active">
-            <label>I agree to the Terms and Conditions</label>
         </div>
     </div>
-    <button class="ui button" type="submit">Submit</button>
+
+    <button class="ui button" type="submit" *ngIf="isCreateSuccess == false">Submit</button>
     <br>
     <h1 id="waring">{{result_text}}</h1>
 </form>
