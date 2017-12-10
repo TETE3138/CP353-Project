@@ -19,13 +19,17 @@ exports.login = (req, res, next) => {
     User.findOne({ username: user_req.username }, '', (err, user) => {
         console.log(user_req);
         if (err || !user || !user.authenticate(user_req.password)) {
-            var fail = { "sucess": "false" };
+            var fail = {
+                success: "false",
+                isadmin: "0"
+            };
             res.json(fail);
         } else {
-            var sucess = { "sucess": "true" };
+            var sucess = { success: "true" ,
+            isadmin : user.isadmin};
             res.json(sucess);
         }
-      
+
     });
 
 }
