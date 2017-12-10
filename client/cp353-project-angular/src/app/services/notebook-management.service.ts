@@ -8,6 +8,10 @@ export class NotebookManagementService {
     options: RequestOptions;
  constructor(private http:Http ) { }
 
+  getNotebookList(){
+    return this.http.get("http://localhost:3000/notebook/get").map((res) => res.json());
+  }
+
  deleteNotebook(id) {
     this.headers = new Headers({
       'Content-Type': 'application/json',
@@ -17,6 +21,27 @@ export class NotebookManagementService {
 
    // console.log("http://61.90.233.80:8082/admin/removeadmin/" + id);
     return this.http.delete("http://localhost:3000/notebook/remove/" + id, this.options)
+      .map((res) => res.json());
+  }
+
+  editNotebook(id, brand, nbname, price, cpu, gpu, os, display, ram, hdd, img_url) {
+
+    let body = {
+      "id": id,
+      "brand": brand,
+      "nbname": nbname,
+      "price": price,
+      "cpu": cpu,
+      "gpu": gpu,
+      "os": os,
+      "display": display,
+      "ram": ram,
+      "hdd": hdd,
+      "img_url": img_url
+    }
+
+
+    return this.http.put("http://localhost:3000/notebook/edit/" + id, body)
       .map((res) => res.json());
   }
 }

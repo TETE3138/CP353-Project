@@ -9,13 +9,21 @@ import { NotebookManagementService } from '../../services/notebook-management.se
 })
 export class ManagementComponent implements OnInit {
 
-  constructor(private getNotebookService: GetNotebookService,private notebookManagementService: NotebookManagementService) { }
+  constructor(private notebookManagementService: NotebookManagementService) { }
   private notebookList: Notebook[];
+
   ngOnInit() {
-    this.getNotebookService.getNotebookList().subscribe((response) => {
+    this.notebookManagementService.getNotebookList().subscribe((response) => {
       this.notebookList = response;
     })
   }
+
+  getNotebookList(){
+    this.notebookManagementService.getNotebookList().subscribe((response) => {
+      this.notebookList = response;
+    })
+  }
+
   deleteNotebook(notebook){
     this.notebookList.forEach((element,index) => {
       if(element == notebook){
@@ -26,7 +34,14 @@ export class ManagementComponent implements OnInit {
       }
     });
     return false;
-    }
+  }
+
+  editNotebook(id, brand, nbname, price, cpu, gpu, os, display, ram, hdd, img_url) {
+    this.notebookManagementService.editNotebook(id, brand, nbname, price, cpu, gpu, os, display, ram, hdd, img_url)
+      .subscribe((response) => {
+         this.getNotebookList();
+      });
+  }
 
 }
 
