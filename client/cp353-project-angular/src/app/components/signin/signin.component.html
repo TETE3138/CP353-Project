@@ -1,17 +1,26 @@
 <h1 class="ui header">Sign In</h1>
+
+<div class="ui error message" *ngIf="errorMessage">
+        <i class="close icon"></i>
+        <div class="header">
+                <i class="frown icon big"></i> {{errorMessage}}
+        </div>
+   
+      </div>
 <form (submit)="login(username.value,password.value)" class="ui form">
     <div class="field">
         <label>Username</label>
-        <input type="text" name="first-name" placeholder="Username" style="width: 250px;">
+        <input type="text" name="first-name" placeholder="Username" style="width: 250px;" #username>
     </div>
     <div class="field">
         <label>Password</label>
-        <input type="password" name="last-name" placeholder="Password" style="width: 250px;">
+        <input type="password" name="last-name" placeholder="Password" style="width: 250px;" #password>
     </div>
 
     <button class="ui button" type="submit">Sign In</button>
     
-    <div class="field">
-        <label>Don't have an account? <a href="http://localhost:4200/signup">Sign up</a></label> 
-    </div>
+ 
 </form>
+<div class="field">
+    <label>Don't have an account? <a href="/signup">Sign up</a></label> 
+</div>

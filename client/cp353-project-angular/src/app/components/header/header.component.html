@@ -5,33 +5,43 @@
         </a>
         <a routerLink="" class="item">Home</a>
         <a routerLink="aboutus" class="item">About us</a>
-        <div class="ui simple dropdown item">
-            Admin <i class="dropdown icon"></i>
-            <div class="menu">
-                <a class="item" href="#">Add Notebook</a>
-                <a class="item" href="#">Edit Notebook</a>
-                <a class="item" href="#">Delete Notebook</a>
-                <div class="divider"></div>
-                <div class="header">Header Item</div>
-                <div class="item">
-                    <i class="dropdown icon"></i> Sub Menu
-                    <div class="menu">
-                        <a class="item" href="#">Link Item</a>
-                        <a class="item" href="#">Link Item</a>
+
+
+        <div class="right menu" *ngIf="this.loginService.getUserLoggedIn() == true">
+            <div class="ui simple dropdown item">
+                <i class="star icon" *ngIf="this.loginService.isadmin"></i>Hello {{this.loginService.username}}
+                <i class="dropdown icon"></i>
+                <div class="right menu">
+                    <div class="header">
+                        <i class="user icon"></i> My Account</div>
+                    <a class="item" href="#">My favourites</a>
+
+                    <div class="divider" *ngIf="this.loginService.isadmin"></div>
+                    <div class="header" *ngIf="this.loginService.isadmin">
+                        <i class="star icon"></i> Admin</div>
+                    <div class="item" *ngIf="this.loginService.isadmin">
+                        <i class="dropdown icon"></i> Manage
+                        <div class="menu">
+                            <a class="item" href="#">Edit notebook</a>
+                        </div>
                     </div>
+
                 </div>
-                <a class="item" href="#">Link Item</a>
             </div>
+            <a href="/" (click)="logOut()" class="item">
+                <i class="sign out icon"></i>Log out</a>
         </div>
-        <div class="right menu">
-            <div class="ui mini inverted segment">
-                <div class="ui inverted right icon input">
-                    <input type="text" placeholder="Search..." />
-                    <i class="search icon"></i>
-                </div>
-            </div>
+        <div class="right menu" *ngIf="this.loginService.getUserLoggedIn() == false">
             <a routerLink="signup" class="item">Sign Up</a>
             <a routerLink="signin" class="item">Sign In</a>
         </div>
+
+
+
+
     </div>
-</div>
+
+    <!-- <div class="right menu" *ngIf="this.loginService.getUserLoggedIn() == true">
+    <a routerLink="signup" class="item"></a>
+    <a routerLink="../" (click)="logOut()" class="item"><i class="sign out icon"></i>Log out</a>
+</div> -->

@@ -7,20 +7,40 @@ export class LoginService {
 
   private isUserLoggedIn: boolean;
 
-  constructor(private http:Http) {
-    this.isUserLoggedIn = false;
+  private username = "";
+  private isadmin = 0;
+  constructor(private http: Http) {
 
   }
-  setUserLoggedIn() {
+
+  ngOnInit() {
+
+  }
+  setUserLoggedIn(username, isadmin) {
     this.isUserLoggedIn = true;
+    this.username = username;
+    this.isadmin = isadmin;
   }
 
   setUserLoggedOut() {
+    localStorage.clear();
     this.isUserLoggedIn = false;
   }
 
 
   getUserLoggedIn() {
+    let username = localStorage.getItem('username');
+    if (username === null) {
+      this.setUserLoggedOut();
+    } else {
+
+      let isadmin = localStorage.getItem('isadmin');
+      if (isadmin == "1")
+        this.setUserLoggedIn(username, 1)
+      else
+        this.setUserLoggedIn(username, 0)
+
+    }
     return this.isUserLoggedIn;
   }
 
