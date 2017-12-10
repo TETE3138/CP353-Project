@@ -9,11 +9,17 @@ import { NotebookManagementService } from '../../services/notebook-management.se
 })
 export class ManagementComponent implements OnInit {
 
-  constructor(private getNotebookService: GetNotebookService,private notebookManagementService: NotebookManagementService) { }
+  constructor(private notebookManagementService: NotebookManagementService) { }
   private notebookList: Notebook[];
 
   ngOnInit() {
-    this.getNotebookService.getNotebookList().subscribe((response) => {
+    this.notebookManagementService.getNotebookList().subscribe((response) => {
+      this.notebookList = response;
+    })
+  }
+
+  getNotebookList(){
+    this.notebookManagementService.getNotebookList().subscribe((response) => {
       this.notebookList = response;
     })
   }
@@ -33,7 +39,7 @@ export class ManagementComponent implements OnInit {
   editNotebook(id, brand, nbname, price, cpu, gpu, os, display, ram, hdd, img_url) {
     this.notebookManagementService.editNotebook(id, brand, nbname, price, cpu, gpu, os, display, ram, hdd, img_url)
       .subscribe((response) => {
-         //this.getN();
+         this.getNotebookList();
       });
   }
 

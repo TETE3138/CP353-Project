@@ -8,6 +8,10 @@ export class NotebookManagementService {
     options: RequestOptions;
  constructor(private http:Http ) { }
 
+  getNotebookList(){
+    return this.http.get("http://localhost:3000/notebook/get").map((res) => res.json());
+  }
+
  deleteNotebook(id) {
     this.headers = new Headers({
       'Content-Type': 'application/json',

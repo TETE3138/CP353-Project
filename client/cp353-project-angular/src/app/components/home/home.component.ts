@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GetNotebookService } from '../../services/getnotebook.service';
+import { NotebookManagementService } from '../../services/notebook-management.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -7,11 +7,11 @@ import { GetNotebookService } from '../../services/getnotebook.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private getNotebookService: GetNotebookService) { }
+  constructor(private notebookManagementService: NotebookManagementService) { }
 
   private notebookList: Notebook[];
   ngOnInit() {
-    this.getNotebookService.getNotebookList().subscribe((response) => {
+    this.notebookManagementService.getNotebookList().subscribe((response) => {
       this.notebookList = response;
     })
   }
