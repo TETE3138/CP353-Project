@@ -1,3 +1,26 @@
-<p>
-  management works!
-</p>
+<h1 class="ui header">Management</h1>
+
+<div class="ui items" *ngFor="let notebook of notebookList">
+  <div class="item">
+    <div class="image">
+      <img src="{{notebook.img_url}}">
+    </div>
+    <div class="content">
+      <a class="header">{{notebook.nbname}}</a>
+      <div class="meta">
+        <span>Description</span>
+      </div>
+      <div class="description">
+        <p>  {{notebook.cpu}}
+          <br> RAM {{notebook.ram}} GB
+          <br> {{notebook.gpu}}
+          <br> ฿{{notebook.price | number}}
+        </p>
+      </div>
+      <div class="meta">
+        <button class="ui button red" type="submit" (click)="deleteNotebook(notebook)">Delete</button>
+        <button class="ui button blue" type="submit">Edit</button>
+      </div>
+    </div>
+  </div>
+</div>
