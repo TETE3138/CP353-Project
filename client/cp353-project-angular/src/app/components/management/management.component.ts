@@ -11,11 +11,13 @@ export class ManagementComponent implements OnInit {
 
   constructor(private getNotebookService: GetNotebookService,private notebookManagementService: NotebookManagementService) { }
   private notebookList: Notebook[];
+
   ngOnInit() {
     this.getNotebookService.getNotebookList().subscribe((response) => {
       this.notebookList = response;
     })
   }
+
   deleteNotebook(notebook){
     this.notebookList.forEach((element,index) => {
       if(element == notebook){
@@ -26,7 +28,14 @@ export class ManagementComponent implements OnInit {
       }
     });
     return false;
-    }
+  }
+
+  editNotebook(id, brand, nbname, price, cpu, gpu, os, display, ram, hdd, img_url) {
+    this.notebookManagementService.editNotebook(id, brand, nbname, price, cpu, gpu, os, display, ram, hdd, img_url)
+      .subscribe((response) => {
+         //this.getN();
+      });
+  }
 
 }
 
