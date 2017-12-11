@@ -21,8 +21,8 @@
                         <input type="text" id="cpu" value=" {{notebook.cpu}}" disabled>
                     </div><br/>
                     <div class="ui right corner labeled input">
-                            <label for="gpu" class="ui label">GPU</label>
-                            <input type="text" id="gpu" value=" {{notebook.gpu}}" disabled>
+                        <label for="gpu" class="ui label">GPU</label>
+                        <input type="text" id="gpu" value=" {{notebook.gpu}}" disabled>
                     </div><br/>
                     <div class="ui right labeled input">
                         <label for="ram" class="ui label">RAM</label>
@@ -36,13 +36,13 @@
                 </div>
                 <div class="meta">
                     <button class="ui button red" type="submit" (click)="deleteNotebook(notebook)">Delete</button>
-                    <button class="ui button blue" type="submit" (click)="editNotebook()">Edit</button>
+                    <button class="ui button blue" type="submit" (click)="gotoEditNotebookFrom()">Edit</button>
                 </div>
 
             </div>
 
             <form class="ui form">
-                <div class="ui active longer modal">
+                <div class="ui longer modal">
                     <div class="header">
                         Notebook Editor
                     </div>

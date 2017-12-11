@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GetNotebookService } from '../../services/getnotebook.service';
 import { NotebookManagementService } from '../../services/notebook-management.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-management',
@@ -9,8 +10,11 @@ import { NotebookManagementService } from '../../services/notebook-management.se
 })
 export class ManagementComponent implements OnInit {
 
-  constructor(private notebookManagementService: NotebookManagementService) { }
+  constructor(private notebookManagementService: NotebookManagementService, private router: Router) { }
   private notebookList: Notebook[];
+
+  private isActive: boolean;
+  private isUpdate: boolean;
 
   ngOnInit() {
     this.notebookManagementService.getNotebookList().subscribe((response) => {
@@ -34,6 +38,24 @@ export class ManagementComponent implements OnInit {
       }
     });
     return false;
+  }
+
+  // active ui modal (ui active modal)
+  OpenEditorForm() {
+    this.isActive = true;
+  }
+
+  // not active ui modal (ui modal)
+  CloseEditorForm() {
+    this.isActive = false;
+  }
+
+  setCreateSuccess() {
+    this.isUpdate = true;
+  }
+
+  setCreateFailed() {
+    this.isUpdate = false;
   }
 
   editNotebook(id, brand, nbname, price, cpu, gpu, os, display, ram, hdd, img_url) {
