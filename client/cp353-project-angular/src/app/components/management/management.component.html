@@ -21,6 +21,62 @@
                 <button class="ui button red" type="submit" (click)="deleteNotebook(notebook)">Delete</button>
                 <button class="ui button blue" type="submit" (click)="editNotebook()">Edit</button>
             </div>
+
+            <form class="ui form">
+                <div class="ui active longer modal">
+                    <div class="header">
+                        Notebook Editor
+                    </div>
+                    <div class="scrolling content">
+                        <div class="field">
+                            <label>Brand</label>
+                            <input type="text" name="brand" placeholder="Brand" style="width: 200px;;" #brand>
+                        </div>
+                        <div class="field">
+                            <label>Notebook Name</label>
+                            <input type="text" name="nbname" placeholder="Notebook Name" style="width: 200px;" #nbname>
+                        </div>
+                        <div class="field">
+                            <label>Price</label>
+                            <input type="text" name="price" placeholder="Price" style="width: 100px;" #price>
+                        </div>
+                        <div class="field">
+                            <label>CPU</label>
+                            <input type="text" name="cpu" placeholder="CPU" style="width: 100px;" #cpu>
+                        </div>
+                        <div class="field">
+                            <label>GPU</label>
+                            <input type="text" name="gpu" placeholder="GPU" style="width: 100px;" #gpu>
+                        </div>
+                        <div class="field">
+                            <label>OS</label>
+                            <input type="text" name="os" placeholder="OS" style="width: 100px;" #os>
+                        </div>
+                        <div class="field">
+                            <label>Display</label>
+                            <input type="text" name="display" placeholder="Display" style="width: 100px;" #display>
+                        </div>
+                        <div class="field">
+                            <label>RAM</label>
+                            <input type="text" name="ram" placeholder="RAM" style="width: 100px;" #ram>
+                        </div>
+                        <div class="field">
+                            <label>HDD</label>
+                            <input type="text" name="hdd" placeholder="HDD" style="width: 100px;" #hdd>
+                        </div>
+                        <div class="field">
+                            <label>Img_Url</label>
+                            <input type="text" name="img_url" placeholder="Img_Url" style="width: 200px;" #img_url>
+                        </div>
+                        <div class="actions">
+                            <div class="ui approve button blue">Update</div>
+                            <div class="ui cancel button red">Cancel</div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+
         </div>
     </div>
 </div>
