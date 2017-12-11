@@ -25,7 +25,6 @@ export class SignupComponent implements OnInit {
   private passwordError: string = "";
   private confirmPasswordError: string = "";
 
-  private result_text: string;
 
   private isCreateSuccess: boolean;
   private isUsernameDuplicated: boolean = false;
