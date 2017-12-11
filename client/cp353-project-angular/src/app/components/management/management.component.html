@@ -1,26 +1,46 @@
 <h1 class="ui header">Management</h1>
 
-<div class="ui items" *ngFor="let notebook of notebookList">
-    <div class="item">
-        <div class="image">
-            <img src="{{notebook.img_url}}">
-        </div>
-        <div class="content">
-            <a class="header">{{notebook.nbname}}</a>
-            <div class="meta">
-                <span>Description</span>
+<form class="ui fluid form">
+    <div class="ui items" *ngFor="let notebook of notebookList">
+        <div class="item">
+            <div class="image">
+                <img src="{{notebook.img_url}}">
             </div>
-            <div class="description">
-                <p> {{notebook.cpu}}
-                    <br> RAM {{notebook.ram}} GB
-                    <br> {{notebook.gpu}}
-                    <br> ฿{{notebook.price | number}}
-                </p>
-            </div>
-            <div class="meta">
-                <button class="ui button red" type="submit" (click)="deleteNotebook(notebook)">Delete</button>
-                <button class="ui button blue" type="submit" (click)="editNotebook()">Edit</button>
+            <div class="content">
+                <div class="field">
+                    <div class="ui large transparent input">
+                        <input type="text" value="{{notebook.nbname}}" disabled>
+                    </div>
+                </div>
+                <div class="meta">
+                    <span>Description</span>
+                </div>
+                <div class="description">
+                    <div class="ui right corner labeled input">
+                        <label for="cpu" class="ui label">CPU</label>
+                        <input type="text" id="cpu" value=" {{notebook.cpu}}" disabled>
+                    </div><br/>
+                    <div class="ui right corner labeled input">
+                            <label for="gpu" class="ui label">GPU</label>
+                            <input type="text" id="gpu" value=" {{notebook.gpu}}" disabled>
+                    </div><br/>
+                    <div class="ui right labeled input">
+                        <label for="ram" class="ui label">RAM</label>
+                        <input type="text" id="ram" value=" {{notebook.ram}}" disabled>
+                        <div class="ui basic label">GB</div>
+                    </div><br/>
+                    <div class="ui right corner labeled input">
+                        <label for="amount" class="ui label">฿</label>
+                        <input type="text" id="amount" value=" {{notebook.price | number}}" disabled>
+                    </div>
+                </div>
+                <div class="meta">
+                    <button class="ui button red" type="submit" (click)="deleteNotebook(notebook)">Delete</button>
+                    <button class="ui button blue" type="submit" (click)="editNotebook()">Edit</button>
+                </div>
+
             </div>
         </div>
     </div>
-</div>
+
+</form>
