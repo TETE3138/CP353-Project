@@ -1,0 +1,45 @@
+<h1 class="ui header">Notebook</h1>
+<div class="ui link cards">
+  <ng-container *ngFor="let notebook of notebookList">
+    <div class="card">
+      <div class="ui image">
+        <div class="ui red ribbon label" *ngIf="notebook.price < 17000">
+          <i class="star icon"></i>
+          Value
+        </div>
+        <img src="{{notebook.img_url}}">
+      </div>
+      <div class="content">
+        <div class="header">{{notebook.nbname}}</div>
+        <div class="meta">
+          <a>{{notebook.brand}}</a>
+        </div>
+        <div class="description">
+          {{notebook.cpu}}
+          <br> RAM {{notebook.ram}} GB
+          <br> {{notebook.gpu}}
+        </div>
+      </div>
+
+      <div class="extra content">
+        <span class="right floated">
+          <div class="ui labeled button" tabindex="0">
+            <div class="ui basic red button">
+              <i class="heart icon"></i> Like
+            </div>
+            <a class="ui basic red left pointing label">
+              0
+            </a>
+          </div>
+        </span>
+        <span>
+          <div class="ui black tag labels large">
+            <a class="ui label">
+              ฿{{notebook.price | number}}
+            </a>
+          </div>
+        </span>
+      </div>
+    </div>
+  </ng-container>
+</div>
