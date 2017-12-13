@@ -59,64 +59,45 @@
             </div>
 
             <form class="ui form">
-                <div class="ui active modal">
+                <div class="ui tiny active modal" style="position : static !important">
+                    <i class="close icon"></i>
                     <div class="header">
                         Notebook Editor
                     </div>
                     <div class="scrolling content">
-                        <div class="field">
-                            <label>Brand</label>
-                            <input type="text" disabled="" name="brand" defaultValue="{{notebook.brand}}" style="width: 200px;;" #brand>
+                        <div class="ui right corner labeled input">
+                            <label for="brand" class="ui label">Brand</label>
+                            <input type="text" id="cpu" value=" {{notebook.brand}}">
                         </div>
-                        <div class="field">
-                            <label>Notebook Name</label>
-                            <input type="text" disabled="" name="nbname" defaultValue="{{notebook.nbname}}" style="width: 200px;" #nbname>
+                        <br/>
+                        <div class="ui right corner labeled input">
+                            <label for="cpu" class="ui label">CPU</label>
+                            <input type="text" id="cpu" value=" {{notebook.cpu}}">
                         </div>
-                        <div class="field">
-                            <label>Price</label>
-                            <input type="text" name="price" defaultValue="{{notebook.price}}" style="width: 80px;" #price>
-                            <div class="ui basic label">฿</div>
+                        <br/>
+                        <div class="ui right corner labeled input">
+                            <label for="gpu" class="ui label">GPU</label>
+                            <input type="text" id="gpu" value=" {{notebook.gpu}}">
                         </div>
-                        <div class="field">
-                            <label>CPU</label>
-                            <input type="text" name="cpu" defaultValue="{{notebook.cpu}}" style="width: 200px;" #cpu>
-                        </div>
-                        <div class="field">
-                            <label>GPU</label>
-                            <input type="text" name="gpu" defaultValue="{{notebook.gpu}}" style="width: 200px;" #gpu>
-                        </div>
-                        <div class="field">
-                            <label>RAM</label>
-                            <input type="text" name="ram" defaultValue="{{notebook.ram}}" style="width: 60px;" #ram>
+                        <br/>
+                        <div class="ui right labeled input">
+                            <label for="ram" class="ui label">RAM</label>
+                            <input type="text" id="ram" value=" {{notebook.ram}}">
                             <div class="ui basic label">GB</div>
                         </div>
-                        <div class="field">
-                            <label>HDD</label>
-                            <input type="text" name="hdd" defaultValue="{{notebook.hdd}}" style="width: 60px;" #hdd>
-                            <div class="ui basic label">TB</div>
+                        <br/>
+                        <div class="ui right corner labeled input">
+                            <label for="amount" class="ui label">฿</label>
+                            <input type="text" id="amount" value=" {{notebook.price | number}}">
                         </div>
-                        <div class="field">
-                            <label>OS</label>
-                            <input type="text" disabled="" name="os" defaultValue="{{notebook.os}}}" style="width: 100px;" #os>
-                        </div>
-                        <div class="field">
-                            <label>Display</label>
-                            <input type="text" disabled="" name="display" defaultValue="{{notebook.display}}" style="width: 100px;" #display>
-                        </div>
-                        <div class="field">
-                            <label>Img_Url</label>
-                            <input type="text" disabled="" name="img_url" defaultValue="{{notebook.img_url}}" style="width: 200px;" #img_url>
-                        </div>
-                        <div class="actions">
+                        <br/>
+                        <div class="actions meta">
                             <div class="ui approve button blue">Update</div>
                             <div class="ui cancel button red">Cancel</div>
                         </div>
                     </div>
                 </div>
             </form>
-
-
         </div>
     </div>
-
 </form>
