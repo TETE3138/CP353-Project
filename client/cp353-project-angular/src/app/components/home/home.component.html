@@ -3,12 +3,12 @@
 <p>A text container is used for the main container, which is useful for single column layouts</p>
 <div class="ui link cards">
   <div class="card" *ngFor="let notebook of notebookList">
-  
+
     <div class="ui image">
-        <div class="ui red ribbon label" *ngIf="notebook.price < 17000">
-            <i class="star icon"></i>
-                VALUE
-          </div>
+      <div class="ui red ribbon label" *ngIf="notebook.price < 17000">
+        <i class="star icon"></i>
+        VALUE
+      </div>
       <img src="{{notebook.img_url}}">
     </div>
     <div class="content">
@@ -24,17 +24,18 @@
     </div>
     <div class="ui black tag labels large">
       <a class="ui label">
-          ฿{{notebook.price | number}}
+        ฿{{notebook.price | number}}
       </a>
     </div>
     <div class="extra content">
       <span class="right floated">
-        <div class="ui labeled button" tabindex="0">
-          <div class="ui basic red button">
-            <i class="heart icon"></i> Like
+        <div class="ui labeled button" tabindex="0" (click)="like(notebook)" onclick="$(this).transition('pulse','50 ms');">
+          <!-- <div class="ui basic red button"> -->
+          <div [ngClass]="{'ui':true,'basic':!notebook.like,'button':true,'red':true}">
+            <i class="heart icon"></i> Like 
           </div>
           <a class="ui basic red left pointing label">
-           0
+            {{notebook.likecount}}
           </a>
         </div>
       </span>

@@ -16,6 +16,9 @@ export class LoginService {
   ngOnInit() {
 
   }
+  getUsername(){
+    return this.username;
+  }
   setUserLoggedIn(username, isadmin) {
     this.isUserLoggedIn = true;
     this.username = username;

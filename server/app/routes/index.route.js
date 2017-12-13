@@ -7,8 +7,11 @@ module.exports = (app) => {
     app.get('/', index.index);
     app.get('/help', index.help);
 
-    app.get('/notebook/get', notebook.getNotebooks);
+    app.get('/notebook/getall', notebook.getNotebooks);
     app.post('/notebook/create', notebook.createNotebooks);
+    app.put('/notebook/like', notebook.like);
+    app.post('/notebook/getLikeCount', notebook.getLikeCount);
+    app.post('/notebook/getLikeUsers', notebook.getLikeUsers);
 
     app.get('/user/getuser', user.getUsers);
     app.post('/user/signup', user.signup);
