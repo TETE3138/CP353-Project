@@ -20,5 +20,6 @@ module.exports = function () {
 
     require('../app/models/notebook.model');
     require('../app/models/user.model');
+    require('../app/models/like.model');
     return db;
 } 

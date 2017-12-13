@@ -26,10 +26,15 @@
 
       <div class="extra content">
         <span class="right floated">
-          <button class="ui labeled icon button">
-            <i class="like icon"></i>
-            Like
-          </button>
+          <div class="ui labeled button" tabindex="0" (click)="like(notebook)" onclick="$(this).transition('pulse','50 ms');">
+            <!-- <div class="ui basic red button"> -->
+            <div [ngClass]="{'ui':true,'basic':!notebook.like,'button':true,'red':true}">
+              <i class="heart icon"></i> 
+            </div>
+            <a class="ui basic red left pointing label">
+              {{notebook.likecount}}
+            </a>
+          </div>
         </span>
         <span>
           <div class="ui black tag labels large">
@@ -70,10 +75,15 @@
 
       <div class="extra content">
         <span class="right floated ">
-          <button class="ui labeled icon button">
-            <i class="like icon"></i>
-            Like
-          </button>
+          <div class="ui labeled button" tabindex="0" (click)="like(notebook)" onclick="$(this).transition('pulse','50 ms');">
+            <!-- <div class="ui basic red button"> -->
+            <div [ngClass]="{'ui':true,'basic':!notebook.like,'button':true,'red':true}">
+              <i class="heart icon"></i> 
+            </div>
+            <a class="ui basic red left pointing label">
+              {{notebook.likecount}}
+            </a>
+          </div>
         </span>
         <span>
           <div class="ui black tag labels large">

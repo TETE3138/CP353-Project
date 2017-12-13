@@ -1,0 +1,6 @@
+div {
+    -webkit-transition: background-color 0.15s ease-out !important;
+    -moz-transition: background-color 0.15s ease-out !important;
+    -o-transition: background-color 0.15s ease-out !important;
+    transition: background-color 0.15s ease-out !important;
+}
