@@ -27,6 +27,9 @@ export class LoginService {
     this.isUserLoggedIn = false;
   }
 
+  getIsAdmin(){
+    return this.isadmin;
+  }
 
   getUserLoggedIn() {
     let username = localStorage.getItem('username');

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GetNotebookService } from '../../services/getnotebook.service';
 import { NotebookManagementService } from '../../services/notebook-management.service';
 import { Router } from '@angular/router';
-
+import { LoginService } from '../../services/login.service';
 @Component({
   selector: 'app-management',
   templateUrl: './management.component.html',
@@ -10,16 +10,19 @@ import { Router } from '@angular/router';
 })
 export class ManagementComponent implements OnInit {
 
-  constructor(private notebookManagementService: NotebookManagementService, private router: Router) { }
+  constructor(private loginService: LoginService,private notebookManagementService: NotebookManagementService, private router: Router) { }
   private notebookList: Notebook[];
 
   private isActive: boolean;
   private isUpdate: boolean;
 
   ngOnInit() {
-    this.notebookManagementService.getNotebookList().subscribe((response) => {
-      this.notebookList = response;
-    })
+  
+      this.notebookManagementService.getNotebookList().subscribe((response) => {
+        this.notebookList = response;
+      })
+  
+
   }
 
   getNotebookList(){

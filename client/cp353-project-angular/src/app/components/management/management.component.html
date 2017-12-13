@@ -1,6 +1,15 @@
 <h1 class="ui header">Management</h1>
 
-<form class="ui fluid form">
+<div class="ui negative message" *ngIf="this.loginService.isadmin == 0">
+    <i class="close icon"></i>
+    <div class="header">
+        Access Denied
+    </div>
+    <ul class="list">
+    <li>This account is not eligible to access this page. </li>
+    </ul>
+</div>
+<form class="ui fluid form" *ngIf="this.loginService.isadmin">
     <div class="ui items" *ngFor="let notebook of notebookList">
         <div class="item">
             <div class="image">
@@ -19,16 +28,19 @@
                     <div class="ui right corner labeled input">
                         <label for="cpu" class="ui label">CPU</label>
                         <input type="text" id="cpu" value=" {{notebook.cpu}}" disabled>
-                    </div><br/>
+                    </div>
+                    <br/>
                     <div class="ui right corner labeled input">
                         <label for="gpu" class="ui label">GPU</label>
                         <input type="text" id="gpu" value=" {{notebook.gpu}}" disabled>
-                    </div><br/>
+                    </div>
+                    <br/>
                     <div class="ui right labeled input">
                         <label for="ram" class="ui label">RAM</label>
                         <input type="text" id="ram" value=" {{notebook.ram}}" disabled>
                         <div class="ui basic label">GB</div>
-                    </div><br/>
+                    </div>
+                    <br/>
                     <div class="ui right corner labeled input">
                         <label for="amount" class="ui label">฿</label>
                         <input type="text" id="amount" value=" {{notebook.price | number}}" disabled>
