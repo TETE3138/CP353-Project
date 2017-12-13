@@ -1,0 +1,122 @@
+db.notebooks.insertMany(
+	[{
+	"brand": "ACER",
+	"nbname": "ASPIRE V3-574G-34M3/T003",
+	"price": "16900",
+	"cpu": "Intel Core i3-5005U (1.7GHz)",
+	"gpu": "NVIDIA GeForce GT 940M",
+	"os": "Linux",
+	"display": "15.6",
+	"ram": "8",
+	"hdd": "1",
+	"img_url": "http://image.ibb.co/d20i5G/php2301.jpg"
+},
+{
+	"brand": "ASUS",
+	"nbname": "K455LA-WX388D",
+	"price": "13490",
+	"cpu": "Intel Core i3-4005U (1.70 GHz)",
+	"gpu": "Intel HD Graphics",
+	"os": "DOS",
+	"display": "12",
+	"ram": "4",
+	"hdd": "1",
+	"img_url": "http://preview.ibb.co/k0TaKb/phpF93B.jpg"
+},
+{
+	"brand": "DELL",
+	"nbname": "VOSTRO 5480-W561049TH SILVER",
+	"price": "30990",
+	"cpu": "Intel Core i7-5500U (2.40 GHz)",
+	"gpu": "NVIDIA GeForce GT 830M",
+	"os": "Windows",
+	"display": "14",
+	"ram": "8",
+	"hdd": "1",
+	"img_url": "http://image.ibb.co/bXkNzb/php4C3F.jpg"
+},
+{
+	"brand": "DELL",
+	"nbname": "INSPIRON 7447-W560508TH RED",
+	"price": "29990",
+	"cpu": "Intel Core i7-4720HQ (2.60 GHz)",
+	"gpu": "NVIDIA GeForce GTX 850M",
+	"os": "Ubuntu",
+	"display": "14",
+	"ram": "8",
+	"hdd": "1",
+	"img_url": "http://image.ibb.co/ngoxXw/php7769.jpg"
+},
+{
+	"brand": "HP",
+	"nbname": "15-AC017TX",
+	"price": "13900",
+	"cpu": "Intel Core i3-4005U (1.7GHz)",
+	"gpu": "AMD Radeon R5 M330",
+	"os": "DOS",
+	"display": "15.6",
+	"ram": "4",
+	"hdd": "1",
+	"img_url": "http://image.ibb.co/cKg6QG/php6214.jpg"
+},
+{
+	"brand": "ACER",
+	"nbname": "ASPIRE E5-551G-F4U1 PIANO BLACK",
+	"price": "19900",
+	"cpu": "AMD FX-7500 (2.10 GHz)",
+	"gpu": "AMD Radeon R7 M265",
+	"os": "Linux",
+	"display": "15.6",
+	"ram": "8",
+	"hdd": "1",
+	"img_url": "http://image.ibb.co/et8ECw/php74B1.jpg"
+},
+{
+	"brand": "ACER",
+	"nbname": "Aspire VN7-571G-70VW",
+	"price": "29900",
+	"cpu": "Intel Core i7-5500U (2.40 GHz)",
+	"gpu": "NVIDIA GeForce GTX 950M",
+	"os": "Linux",
+	"display": "15.6",
+	"ram": "8",
+	"hdd": "1",
+	"img_url": "http://image.ibb.co/kUR1sw/php70FE.jpg"
+},
+{
+	"brand": "ACER",
+	"nbname": "Aspire E5-573G-545N/T001",
+	"price": "19900",
+	"cpu": "Intel Core i5-5200U (2.20 GHz)",
+	"gpu": "NVIDIA GeForce GT 940M",
+	"os": "Linux",
+	"display": "15.6",
+	"ram": "8",
+	"hdd": "0.5",
+	"img_url": "http://image.ibb.co/fEK7zb/php53A.jpg"
+},
+{
+	"brand": "ASUS",
+	"nbname": "GL552JX-DM087D",
+	"price": "29900",
+	"cpu": "Intel Core i7-4720HQ (2.60 GHz)",
+	"gpu": "NVIDIA GeForce GTX 950M",
+	"os": "DOS",
+	"display": "15.6",
+	"ram": "4",
+	"hdd": "1",
+	"img_url": "http://image.ibb.co/hy1LKb/phpEF4E.jpg"
+},
+{
+	"brand": "LENOVO",
+	"nbname": "U4170-80JV007CTA",
+	"price": "17990",
+	"cpu": "Intel Core i5-5200U",
+	"gpu": "NVIDIA GeForce 920M",
+	"os": "DOS",
+	"display": "14",
+	"ram": "4",
+	"hdd": "0.5",
+	"img_url": "http://preview.ibb.co/jGSMQG/php1DA5.jpg"
+}]
+)

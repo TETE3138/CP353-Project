@@ -11,8 +11,6 @@ Create Connection CP353-Project localhost port 27017
 Create Database notebookvalue
 Create Database collections notebooks and users
 Copy query.txt file and Run
-npm install --save react react-dom
-npm install --save react-bootstrap
 ```
 ## Run MongoDB
 ```
@@ -24,6 +22,8 @@ mongod
 cd client/cp353-project-angular
 npm install
 npm install -g @angular/cli
+npm install --save react react-dom
+npm install --save react-bootstrap
 ng serve
 ```
 ```
