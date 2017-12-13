@@ -24,20 +24,14 @@ export class NotebookManagementService {
       .map((res) => res.json());
   }
 
-  editNotebook(id, brand, nbname, price, cpu, gpu, os, display, ram, hdd, img_url) {
+  editNotebook(id, price, cpu, gpu, ram, hdd) {
 
     let body = {
-      "id": id,
-      "brand": brand,
-      "nbname": nbname,
       "price": price,
       "cpu": cpu,
       "gpu": gpu,
-      "os": os,
-      "display": display,
       "ram": ram,
-      "hdd": hdd,
-      "img_url": img_url
+      "hdd": hdd
     }
 
 
