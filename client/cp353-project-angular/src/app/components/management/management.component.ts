@@ -21,8 +21,8 @@ export class ManagementComponent implements OnInit {
       this.notebookManagementService.getNotebookList().subscribe((response) => {
         this.notebookList = response;
       })
-  
-
+      
+      this.CloseEditorForm();
   }
 
   getNotebookList(){
@@ -61,8 +61,8 @@ export class ManagementComponent implements OnInit {
     this.isUpdate = false;
   }
 
-  editNotebook(id, brand, nbname, price, cpu, gpu, os, display, ram, hdd, img_url) {
-    this.notebookManagementService.editNotebook(id, brand, nbname, price, cpu, gpu, os, display, ram, hdd, img_url)
+  editNotebook(id, price, cpu, gpu, ram, hdd) {
+    this.notebookManagementService.editNotebook(id, price, cpu, gpu, ram, hdd)
       .subscribe((response) => {
          this.getNotebookList();
       });

@@ -10,22 +10,24 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { SigninComponent } from './components/signin/signin.component';
-import {UserManagementService} from './services/user-management.service';
+import { NotebookComponent } from './components/notebook/notebook.component';
+import { UserManagementService } from './services/user-management.service';
 import { GetNotebookService } from './services/getnotebook.service'
 import { NotebookManagementService } from './services/notebook-management.service'
 import { LoginService } from './services/login.service';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms'
-import {AuthguardGuard} from './authguard.guard';
+import { AuthguardGuard } from './authguard.guard';
 import { ManagementComponent } from './components/management/management.component'
 
-export const routes:Routes = [
-  {path: '',component: HomeComponent},
-  {path: 'home',canActivate: [AuthguardGuard],component: HomeComponent},
-  {path: 'aboutus',component: AboutusComponent},
-  {path: 'signup',component: SignupComponent},
-  {path: 'signin',component: SigninComponent},
-  {path: 'management',canActivate: [AuthguardGuard],component: ManagementComponent}
+export const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'home', canActivate: [AuthguardGuard], component: HomeComponent },
+  { path: 'notebook', component: NotebookComponent },
+  { path: 'aboutus', component: AboutusComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'signin', component: SigninComponent },
+  { path: 'management', canActivate: [AuthguardGuard], component: ManagementComponent }
 ]
 
 @NgModule({
@@ -37,6 +39,7 @@ export const routes:Routes = [
     HomeComponent,
     SignupComponent,
     SigninComponent,
+    NotebookComponent,
     ManagementComponent
   ],
   imports: [
@@ -45,7 +48,7 @@ export const routes:Routes = [
     HttpModule,
     FormsModule
   ],
-  providers: [GetNotebookService,UserManagementService,LoginService,AuthguardGuard,NotebookManagementService],
+  providers: [GetNotebookService, UserManagementService, LoginService, AuthguardGuard, NotebookManagementService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
