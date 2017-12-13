@@ -9,6 +9,7 @@ module.exports = (app) => {
 
     app.get('/notebook/get', notebook.getNotebooks);
     app.post('/notebook/create', notebook.createNotebooks);
+    app.put('/notebook/edit', notebook.updateNotebooks);
 
     app.get('/user/getuser', user.getUsers);
     app.post('/user/signup', user.signup);

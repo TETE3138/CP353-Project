@@ -1,4 +1,11 @@
 <h1 class="ui header">Management</h1>
+<div class="ui success message" *ngIf="isUpdateSuccess == true">
+    <i class="close icon"></i>
+    <div class="header">
+        Your notebook update was successful.
+    </div>
+    <button class="ui green button">OK</button>
+</div>
 
 <div class="ui negative message" *ngIf="this.loginService.isadmin == 0">
     <i class="close icon"></i>
@@ -58,7 +65,8 @@
 
             </div>
 
-            <form class="ui form">
+
+            <form (submit)="updateNotebook(cpu.value,gpu.value,ram.value,hdd.value,price.value)" #f="ngForm" class="ui form">
                 <div class="ui tiny active modal" style="position : static !important">
                     <i class="close icon"></i>
                     <div class="header">
@@ -67,37 +75,67 @@
                     <div class="scrolling content">
                         <div class="ui right corner labeled input">
                             <label for="brand" class="ui label">Brand</label>
-                            <input type="text" id="cpu" value=" {{notebook.brand}}">
+                            <input type="text" id="brand" value=" {{notebook.brand}}" disabled #brand>
+                        </div>
+                        <br/>
+                        <div class="ui right corner labeled input">
+                            <label for="nbname" class="ui label">Notebook Name</label>
+                            <input type="text" id="nbname" value=" {{notebook.nbname}}" disabled #nbname>
+                        </div>
+                        <br/>
+                        <div class="ui right corner labeled input">
+                            <label for="display" class="ui label">Display</label>
+                            <input type="text" id="display" value=" {{notebook.display}}" disabled #display>
+                        </div>
+                        <div class="ui right corner labeled input">
+                            <label for="os" class="ui label">OS</label>
+                            <input type="text" id="os" value=" {{notebook.os}}" disabled #os>
                         </div>
                         <br/>
                         <div class="ui right corner labeled input">
                             <label for="cpu" class="ui label">CPU</label>
-                            <input type="text" id="cpu" value=" {{notebook.cpu}}">
+                            <input type="text" id="cpu" value=" {{notebook.cpu}}" #cpu>
                         </div>
                         <br/>
                         <div class="ui right corner labeled input">
                             <label for="gpu" class="ui label">GPU</label>
-                            <input type="text" id="gpu" value=" {{notebook.gpu}}">
+                            <input type="text" id="gpu" value=" {{notebook.gpu}}" #gpu>
                         </div>
                         <br/>
                         <div class="ui right labeled input">
                             <label for="ram" class="ui label">RAM</label>
-                            <input type="text" id="ram" value=" {{notebook.ram}}">
+                            <!--<input type="text" id="ram" value=" {{notebook.ram}}" #ram>-->
+                            <select class="ui dropdown" #ram>
+                                <option value="" hidden>{{notebook.ram}}</option>
+                                <option value="2">2</option>
+                                <option value="4">4</option>
+                                <option value="8">8</option>
+                                <option value="12">12</option>
+                                <option value="16">16</option>
+                            </select>
                             <div class="ui basic label">GB</div>
                         </div>
                         <br/>
+                        <div class="ui right labeled input">
+                            <label for="hdd" class="ui label">HDD</label>
+                            <input type="text" id="hdd" value=" {{notebook.hdd}}" #hdd>
+                            <div class="ui basic label">TB</div>
+                        </div>
+                        <br/>
                         <div class="ui right corner labeled input">
-                            <label for="amount" class="ui label">฿</label>
-                            <input type="text" id="amount" value=" {{notebook.price | number}}">
+                            <label for="price" class="ui label">฿</label>
+                            <input type="text" id="price" value=" {{notebook.price | number}}" #price>
                         </div>
                         <br/>
                         <div class="actions meta">
-                            <div class="ui approve button blue">Update</div>
-                            <div class="ui cancel button red">Cancel</div>
+                            <div class="ui button blue" type="submit" *ngIf="isUpdateSuccess == false">Update</div>
+                            <div class="ui button red" type="submit">Cancel</div>
                         </div>
                     </div>
                 </div>
             </form>
+
+
         </div>
     </div>
 </form>

@@ -14,7 +14,14 @@ export class ManagementComponent implements OnInit {
   private notebookList: Notebook[];
 
   private isActive: boolean;
-  private isUpdate: boolean;
+  private isUpdateSuccess: boolean;
+
+  private cpuError: string;
+  private gpuError: string;
+  private ramError: string;
+  private hddError: string;
+  private priceError: string;
+
 
   ngOnInit() {
   
@@ -23,6 +30,7 @@ export class ManagementComponent implements OnInit {
       })
       
       this.CloseEditorForm();
+      this.setUpdateFailed();
   }
 
   getNotebookList(){
@@ -53,18 +61,56 @@ export class ManagementComponent implements OnInit {
     this.isActive = false;
   }
 
-  setCreateSuccess() {
-    this.isUpdate = true;
+  setUpdateSuccess() {
+    this.isUpdateSuccess = true;
   }
 
-  setCreateFailed() {
-    this.isUpdate = false;
+  setUpdateFailed() {
+    this.isUpdateSuccess = false;
   }
 
-  editNotebook(id, price, cpu, gpu, ram, hdd) {
-    this.notebookManagementService.editNotebook(id, price, cpu, gpu, ram, hdd)
-      .subscribe((response) => {
-         this.getNotebookList();
+  editNotebook(cpu, gpu, ram, hdd, price) {
+
+    /*if(cpu === "") {
+      this.cpuError = "Please Enter cpu.";
+    }else if(cpu === ) {
+      this.cpuError = "";
+    } else {
+      this.cpuError = "";
+    }
+    if(gpu === "") {
+      this.gpuError = "Please Enter cpu.";
+    }else if(gpu === ) {
+      this.gpuError = "";
+    } else {
+      this.gpuError = "";
+    }
+    if(ram === "") {
+      this.ramError = "Please Enter cpu.";
+    }else if(ram === ) {
+      this.ramError = "";
+    } else {
+      this.ramError = "";
+    }
+    if(hdd === "") {
+      this.hddError = "Please Enter cpu.";
+    }else if(hdd === ) {
+      this.hddError = "";
+    } else {
+      this.hddError = "";
+    }
+    if(price === "") {
+      this.priceError = "Please Enter cpu.";
+    }else if(hdd === ) {
+      this.priceError = "";
+    } else {
+      this.priceError = "";
+    }*/
+    
+
+
+    this.notebookManagementService.updateNotebook(cpu, gpu, ram, hdd, price).subscribe((response) => {
+         this.setUpdateSuccess();
       });
   }
 
