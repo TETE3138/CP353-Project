@@ -1,4 +1,7 @@
-<h1 class="ui header">New Notebook</h1>
+<h1 class="ui header">
+  <i class="add circle icon"></i>
+  New Notebook
+</h1>
 <div class="ui four link cards">
   <ng-container *ngFor="let notebook of (notebookList | slice:notebookList.length - 4)">
     <div class="card">
@@ -39,7 +42,10 @@
     </div>
   </ng-container>
 </div>
-<h1 class="ui header">Recommend</h1>
+<h1 class="ui header">
+  <i class="thumbs outline up icon"></i>
+  Recommend
+</h1>
 <div class="ui four link cards">
   <ng-container *ngFor="let notebook of notebookList">
     <div class="card" *ngIf="notebook.price < 18000">
