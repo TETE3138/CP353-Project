@@ -24,18 +24,8 @@ export class NotebookManagementService {
       .map((res) => res.json());
   }
 
-  updateNotebook(cpu, gpu, ram, hdd, price) {
-
-    let body = {
-      "cpu": cpu,
-      "gpu": gpu,
-      "ram": ram,
-      "hdd": hdd,
-      "price": price
-    }
-
-
-    return this.http.put("http://localhost:3000/notebook/edit/", body)
+  editNotebook(notebook) {
+    return this.http.put("http://localhost:3000/notebook/edit/", notebook)
       .map((res) => res.json());
   }
 

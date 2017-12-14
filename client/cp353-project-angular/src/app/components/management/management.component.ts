@@ -3,6 +3,7 @@ import { GetNotebookService } from '../../services/getnotebook.service';
 import { NotebookManagementService } from '../../services/notebook-management.service';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
+
 @Component({
   selector: 'app-management',
   templateUrl: './management.component.html',
@@ -10,7 +11,7 @@ import { LoginService } from '../../services/login.service';
 })
 export class ManagementComponent implements OnInit {
 
-  constructor(private loginService: LoginService,private notebookManagementService: NotebookManagementService, private router: Router) { }
+  constructor(private loginService: LoginService, private notebookManagementService: NotebookManagementService, private router: Router) { }
   private notebookList: Notebook[];
 
   private isActive: boolean;
@@ -24,28 +25,29 @@ export class ManagementComponent implements OnInit {
 
 
   ngOnInit() {
-  
-      this.notebookManagementService.getNotebookList().subscribe((response) => {
-        this.notebookList = response;
-      })
-      
-      this.CloseEditorForm();
-      this.setUpdateFailed();
+    this.toEditNotebook = new Notebook();
+    this.notebookManagementService.getNotebookList().subscribe((response) => {
+      this.notebookList = response;
+    })
+
+
+    this.CloseEditorForm();
+    this.setUpdateFailed();
   }
 
-  getNotebookList(){
+  getNotebookList() {
     this.notebookManagementService.getNotebookList().subscribe((response) => {
       this.notebookList = response;
     })
   }
 
-  deleteNotebook(notebook){
-    this.notebookList.forEach((element,index) => {
-      if(element == notebook){
+  deleteNotebook(notebook) {
+    this.notebookList.forEach((element, index) => {
+      if (element == notebook) {
         this.notebookManagementService.deleteNotebook(notebook.id).subscribe((response) => {
-          console.log("delete respone : "+response);
+          console.log("delete respone : " + response);
         });
-        this.notebookList.splice(index,1);
+        this.notebookList.splice(index, 1);
       }
     });
     return false;
@@ -69,8 +71,9 @@ export class ManagementComponent implements OnInit {
     this.isUpdateSuccess = false;
   }
 
-  editNotebook(cpu, gpu, ram, hdd, price) {
-
+  setEditNotebook(notebook) {
+    console.log(notebook.nbname)
+    this.toEditNotebook = notebook
     /*if(cpu === "") {
       this.cpuError = "Please Enter cpu.";
     }else if(cpu === ) {
@@ -105,19 +108,29 @@ export class ManagementComponent implements OnInit {
       this.priceError = "";
     } else {
       this.priceError = "";
+
+      
+   
     }*/
-    
 
 
-    this.notebookManagementService.updateNotebook(cpu, gpu, ram, hdd, price).subscribe((response) => {
-         this.setUpdateSuccess();
-      });
+
   }
+  editNotebook(notebook) {
+    console.log(notebook.hdd)
 
+    this.notebookManagementService.editNotebook(notebook).subscribe((response) => {
+      if (response._id == notebook) {
+        console.log(response)
+      }
+    });
+  }
+  private toEditNotebook: Notebook
 }
 
 
-interface Notebook {
+
+class Notebook {
   brand: string;
   nbname: string;
   price: number;
