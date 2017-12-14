@@ -1,9 +1,5 @@
-var Notebook = require('mongoose').model('Notebook'); <<
-<< << < HEAD
-    ===
-    === =
-    var Like = require('mongoose').model('Like'); >>>
->>> > 2 f5029d62838c8767f0490babc2be3a34b876acf
+var Notebook = require('mongoose').model('Notebook');
+var Like = require('mongoose').model('Like');
 var path = require('path');
 
 
@@ -11,12 +7,8 @@ exports.getNotebooks = (req, res, next) => {
     Notebook.find((err, notebook) => {
         if (err) {
             console.log('Failure');
-            return next(err); <<
-            << << < HEAD
-        } else { ===
-            === =
-        } else { >>>
-            >>> > 2 f5029d62838c8767f0490babc2be3a34b876acf
+            return next(err);
+        } else {
             console.log('Success');
             res.json(notebook);
         }
@@ -36,22 +28,29 @@ exports.createNotebooks = (req, res, next) => {
         }
     });
 }
-exports.updateNotebooks = (req, res, next) => {
+exports.editNotebook = (req, res, next) => {
 
     var notebook = new Notebook(req.body);
 
-    Notebook.findById(id, function(err, notebook) {
-        if (err) {
-            return next(err);
+    Notebook.findByIdAndUpdate(notebook._id, {
+        $set: {
+            brand: notebook.brand,
+            nbname: notebook.nbname,
+            price: notebook.price,
+            cpu: notebook.cpu,
+            gpu: notebook.gpu,
+            os: notebook.os,
+            display: notebook.display,
+            ram: notebook.ram,
+            hdd: notebook.hdd,
+            img_url: notebook.img_url
         }
-
-        notebook.size = 'large';
-        notebook.save(function(err, updateNotebooks) {
-            if (err) {
-                return next(err);
-                res.send(updateNotebooks);
-            }
-        });
+    }, { new: true }, function (err, editedNotebook) {
+        if (err)
+            console.log("Error edit notebook : " + err)
+        else {
+            res.json(editedNotebook)
+        }
     });
 }
 
@@ -59,7 +58,7 @@ exports.like = (req, res, next) => {
     var like = new Like(req.body);
     var query = Like.findOne({ 'nbid': like.nbid, 'username': like.username });
 
-    query.exec(function(err, found_like) {
+    query.exec(function (err, found_like) {
         if (err)
             console.log(err)
 
@@ -73,7 +72,7 @@ exports.like = (req, res, next) => {
                     return next(err);
                 } else {
                     var count;
-                    Like.find({ "nbid": like.nbid }).exec(function(err, likelist) {
+                    Like.find({ "nbid": like.nbid }).exec(function (err, likelist) {
                         if (err) {
                             console.log('Add Like Failure');
                             return next(err);
@@ -90,7 +89,7 @@ exports.like = (req, res, next) => {
             result = "removelike"
             Like.find({ 'nbid': like.nbid, 'username': like.username }).remove().exec();
             var count;
-            Like.find({ "nbid": like.nbid }).exec(function(err, likelist) {
+            Like.find({ "nbid": like.nbid }).exec(function (err, likelist) {
                 if (err) {
                     console.log('Add Like Failure');
                     return next(err);
@@ -109,7 +108,7 @@ exports.getLikeCount = (req, res, next) => {
     var nbid = req.body.nbid;
     console.log(nbid)
 
-    Like.find({ "nbid": nbid }).exec(function(err, like) {
+    Like.find({ "nbid": nbid }).exec(function (err, like) {
         if (err) {
             console.log('Add Like Failure');
             return next(err);
@@ -125,7 +124,7 @@ exports.getLikeCount = (req, res, next) => {
 exports.getLikeUsers = (req, res, next) => {
     var nbid = req.body.nbid;
 
-    Like.find({ "nbid": nbid }).exec(function(err, like) {
+    Like.find({ "nbid": nbid }).exec(function (err, like) {
         if (err) {
             console.log('Add Like Failure');
             return next(err);
