@@ -6,11 +6,13 @@
   <ng-container *ngFor="let notebook of notebookList">
     <div class="card">
       <div class="ui image">
+          <img class="ui Mini image" src="{{notebook.img_url}}" style="max-height: 200px">
         <div class="ui red ribbon label" *ngIf="notebook.price < 17000">
           <i class="star icon"></i>
           Value
+         
         </div>
-        <img src="{{notebook.img_url}}">
+       
       </div>
       <div class="content">
         <div class="header">{{notebook.nbname}}</div>

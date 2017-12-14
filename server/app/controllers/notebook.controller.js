@@ -4,7 +4,7 @@ var path = require('path');
 
 
 exports.getNotebooks = (req, res, next) => {
-    Notebook.find((err, notebook) => {
+    Notebook.find({}).sort({ insert_date: 'desc' }).exec((err, notebook) => {
         if (err) {
             console.log('Failure');
             return next(err);
@@ -52,6 +52,13 @@ exports.editNotebook = (req, res, next) => {
             res.json(editedNotebook)
         }
     });
+}
+exports.delete = (req, res, next) => {
+
+    var nbid = req.body.nbid;
+    console.log(nbid);
+    Notebook.find({ "_id": nbid }).remove().exec();
+    res.json({ "_id": nbid });
 }
 
 exports.like = (req, res, next) => {

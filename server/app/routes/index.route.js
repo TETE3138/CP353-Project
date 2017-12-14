@@ -11,6 +11,7 @@ module.exports = (app) => {
     app.post('/notebook/create', notebook.createNotebooks);
     app.put('/notebook/edit', notebook.editNotebook);
     app.put('/notebook/like', notebook.like);
+    app.post('/notebook/delete', notebook.delete);
     app.post('/notebook/getLikeCount', notebook.getLikeCount);
     app.post('/notebook/getLikeUsers', notebook.getLikeUsers);
 

@@ -26,15 +26,17 @@ export class ManagementComponent implements OnInit {
 
   ngOnInit() {
     this.toEditNotebook = new Notebook();
-    this.notebookManagementService.getNotebookList().subscribe((response) => {
-      this.notebookList = response;
-    })
-
+    this.updateList();
 
     this.CloseEditorForm();
     this.setUpdateFailed();
   }
+  updateList() {
+    this.notebookManagementService.getNotebookList().subscribe((response) => {
+      this.notebookList = response;
+    })
 
+  }
   getNotebookList() {
     this.notebookManagementService.getNotebookList().subscribe((response) => {
       this.notebookList = response;
@@ -42,15 +44,12 @@ export class ManagementComponent implements OnInit {
   }
 
   deleteNotebook(notebook) {
-    this.notebookList.forEach((element, index) => {
-      if (element == notebook) {
-        this.notebookManagementService.deleteNotebook(notebook.id).subscribe((response) => {
-          console.log("delete respone : " + response);
-        });
-        this.notebookList.splice(index, 1);
+    this.notebookManagementService.deleteNotebook(notebook).subscribe((response) => {
+      if (response._id == notebook._id) {
+        //delete ok
+        this.updateList();
       }
     });
-    return false;
   }
 
   // active ui modal (ui active modal)
@@ -70,7 +69,9 @@ export class ManagementComponent implements OnInit {
   setUpdateFailed() {
     this.isUpdateSuccess = false;
   }
-
+  setAddNotebook(notebook) {
+    this.toEditNotebook = new Notebook();
+  }
   setEditNotebook(notebook) {
     console.log(notebook.nbname)
     this.toEditNotebook = notebook
@@ -108,12 +109,16 @@ export class ManagementComponent implements OnInit {
       this.priceError = "";
     } else {
       this.priceError = "";
-
-      
-   
     }*/
 
 
+
+  }
+  addNoteBook() {
+    this.notebookManagementService.createNotebook(this.toEditNotebook).subscribe((response) => {
+      console.log(response)
+      this.updateList() 
+    });
 
   }
   editNotebook(notebook) {
