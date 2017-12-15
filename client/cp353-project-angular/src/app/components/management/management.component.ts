@@ -100,6 +100,7 @@ export class ManagementComponent implements OnInit {
   }
   addNoteBook() {
     if (this.inputCheck()) {
+      this.updateList()
     }
     else {
       this.notebookManagementService.createNotebook(this.toEditNotebook).subscribe((response) => {
@@ -109,19 +110,23 @@ export class ManagementComponent implements OnInit {
 
       });
     }
-    this.updateList()
+
   }
   editNotebook(notebook) {
     if (this.inputCheck()) {
+      this.updateList()
     }
     else {
       this.notebookManagementService.editNotebook(notebook).subscribe((response) => {
         if (response._id == notebook._id) {
           $('.ui.modal.edit').modal('hide');
-
+          this.updateList()
         }
       });
     }
+
+  }
+  cancelEdit() {
     this.updateList()
   }
 
