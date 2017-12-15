@@ -4,6 +4,7 @@ import { NotebookManagementService } from '../../services/notebook-management.se
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
 import { Title } from '@angular/platform-browser';
+declare var $: any;
 @Component({
   selector: 'app-management',
   templateUrl: './management.component.html',
@@ -11,7 +12,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class ManagementComponent implements OnInit {
 
-  constructor(private titleService: Title,private loginService: LoginService, private notebookManagementService: NotebookManagementService, private router: Router) { }
+  constructor(private titleService: Title, private loginService: LoginService, private notebookManagementService: NotebookManagementService, private router: Router) { }
   private notebookList: Notebook[];
 
   private isActive: boolean;
@@ -23,6 +24,9 @@ export class ManagementComponent implements OnInit {
   private hddError: string;
   private priceError: string;
 
+  private toEditNotebook: Notebook
+
+  private errorMsgNotebook: ErrorMsgNotebook = new ErrorMsgNotebook()
 
   ngOnInit() {
     this.titleService.setTitle('NotebookValue');
@@ -72,81 +76,100 @@ export class ManagementComponent implements OnInit {
   }
   setAddNotebook(notebook) {
     this.toEditNotebook = new Notebook();
+    this.errorMsgNotebook = new ErrorMsgNotebook()
   }
   setEditNotebook(notebook) {
-    console.log(notebook.nbname)
     this.toEditNotebook = notebook
-    /*if(cpu === "") {
-      this.cpuError = "Please Enter cpu.";
-    }else if(cpu === ) {
-      this.cpuError = "";
-    } else {
-      this.cpuError = "";
-    }
-    if(gpu === "") {
-      this.gpuError = "Please Enter cpu.";
-    }else if(gpu === ) {
-      this.gpuError = "";
-    } else {
-      this.gpuError = "";
-    }
-    if(ram === "") {
-      this.ramError = "Please Enter cpu.";
-    }else if(ram === ) {
-      this.ramError = "";
-    } else {
-      this.ramError = "";
-    }
-    if(hdd === "") {
-      this.hddError = "Please Enter cpu.";
-    }else if(hdd === ) {
-      this.hddError = "";
-    } else {
-      this.hddError = "";
-    }
-    if(price === "") {
-      this.priceError = "Please Enter cpu.";
-    }else if(hdd === ) {
-      this.priceError = "";
-    } else {
-      this.priceError = "";
-    }*/
+    this.errorMsgNotebook = new ErrorMsgNotebook()
+  }
 
 
-
+  inputCheck(): Boolean {
+    this.errorMsgNotebook = new ErrorMsgNotebook()
+    this.errorMsgNotebook.brand = this.chkS(this.toEditNotebook.brand)
+    this.errorMsgNotebook.nbname = this.chkS(this.toEditNotebook.nbname)
+    this.errorMsgNotebook.price = this.chkN(this.toEditNotebook.price)
+    this.errorMsgNotebook.cpu = this.chkS(this.toEditNotebook.cpu)
+    this.errorMsgNotebook.gpu = this.chkS(this.toEditNotebook.gpu)
+    this.errorMsgNotebook.os = this.chkS(this.toEditNotebook.os)
+    this.errorMsgNotebook.display = this.chkN(this.toEditNotebook.display)
+    this.errorMsgNotebook.ram = this.chkN(this.toEditNotebook.ram)
+    this.errorMsgNotebook.hdd = this.chkN(this.toEditNotebook.hdd)
+    this.errorMsgNotebook.img_url = this.chkS(this.toEditNotebook.img_url)
+    return this.errorMsgNotebook.isError()
   }
   addNoteBook() {
-    this.notebookManagementService.createNotebook(this.toEditNotebook).subscribe((response) => {
-      console.log(response)
-      this.updateList() 
-    });
+    if (this.inputCheck()) {
+    }
+    else {
+      this.notebookManagementService.createNotebook(this.toEditNotebook).subscribe((response) => {
+        $('.ui.modal.add').modal('hide');
+        console.log(response)
+        this.updateList()
 
+      });
+    }
+    this.updateList()
   }
   editNotebook(notebook) {
-    console.log(notebook.hdd)
+    if (this.inputCheck()) {
+    }
+    else {
+      this.notebookManagementService.editNotebook(notebook).subscribe((response) => {
+        if (response._id == notebook._id) {
+          $('.ui.modal.edit').modal('hide');
 
-    this.notebookManagementService.editNotebook(notebook).subscribe((response) => {
-      if (response._id == notebook) {
-        console.log(response)
-      }
-    });
+        }
+      });
+    }
+    this.updateList()
   }
-  private toEditNotebook: Notebook
+
+  //Input check
+  chkS(str) {
+    if (str == null || str.length <= 0)
+      return "This field can't be empty"
+
+    return "";
+  }
+  chkN(str) {
+    if (str == null || str.length <= 0)
+      return "This field can't be empty and must be numberic only "
+    if (+str == null)
+      return "This field must be numberic only"
+    return "";
+  }
+
 }
 
+class ErrorMsgNotebook {
+  brand: string = "";
+  nbname: string = "";
+  price: string = "";
+  cpu: string = "";
+  gpu: string = "";
+  os: string = "";
+  display: string = "";
+  ram: string = "";
+  hdd: string = "";
+  img_url: string = "";
 
+  isError(): Boolean {
+    return (this.brand != "" || this.nbname != "" || this.price != "" || this.cpu != "" || this.gpu != "" || this.os != "" || this.display != "" || this.ram != "" || this.hdd != "" || this.img_url != "")
+  }
+}
 
 class Notebook {
-  brand: string;
-  nbname: string;
-  price: number;
-  cpu: string;
-  gpu: string;
-  os: string;
-  display: number;
-  ram: number;
-  hdd: number;
-  img_url: string;
+  brand: string;      //[0]
+  nbname: string;     //[1]
+  price: number;      //[2]
+  cpu: string;        //[3]
+  gpu: string;        //[4]
+  os: string;         //[5]
+  display: number;    //[6]
+  ram: number;        //[7]
+  hdd: number;        //[8]
+  img_url: string;    //[9]
   insert_by: string;
   insert_date: string;
 }
