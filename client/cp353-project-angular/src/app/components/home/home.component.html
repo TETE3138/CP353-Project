@@ -10,7 +10,8 @@
           <i class="star icon"></i>
           New
         </div>
-        <img src="{{notebook.img_url}}" style="max-height: 200px">
+        <img src="{{notebook.img_url}}" onError="this.src = 'https://secure.hmepowerweb.com/Resources/Images/NoImageAvailableLarge.jpg'"
+          style="max-height: 200px">
       </div>
       <div class="content">
         <div class="header">{{notebook.nbname}}</div>
@@ -29,9 +30,8 @@
       <div class="extra content">
         <span class="right floated">
           <div class="ui labeled button" tabindex="0" (click)="like(notebook)" onclick="$(this).transition('pulse','50 ms');">
-            <!-- <div class="ui basic red button"> -->
             <div [ngClass]="{'ui':true,'basic':!notebook.like,'button':true,'red':true}">
-              <i class="heart icon"></i> 
+              <i class="heart icon"></i>
             </div>
             <a class="ui basic red left pointing label">
               {{notebook.likecount}}
@@ -61,7 +61,8 @@
           <i class="star icon"></i>
           Value
         </div>
-        <img src="{{notebook.img_url}}" style="max-height: 200px">
+        <img src="{{notebook.img_url}}" onError="this.src = 'https://secure.hmepowerweb.com/Resources/Images/NoImageAvailableLarge.jpg'"
+          style="max-height: 200px">
       </div>
       <div class="content">
         <div class="header">{{notebook.nbname}}</div>
@@ -82,7 +83,7 @@
           <div class="ui labeled button" tabindex="0" (click)="like(notebook)" onclick="$(this).transition('pulse','50 ms');">
             <!-- <div class="ui basic red button"> -->
             <div [ngClass]="{'ui':true,'basic':!notebook.like,'button':true,'red':true}">
-              <i class="heart icon"></i> 
+              <i class="heart icon"></i>
             </div>
             <a class="ui basic red left pointing label">
               {{notebook.likecount}}

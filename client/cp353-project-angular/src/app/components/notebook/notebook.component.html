@@ -5,7 +5,8 @@
     <ng-container *ngFor="let notebook of notebookList">
         <div class="card">
             <div class="ui image">
-                <img class="ui Mini image" src="{{notebook.img_url}}" style="max-height: 200px">
+                <img class="ui Mini image" src="{{notebook.img_url}}" onError="this.src = 'https://secure.hmepowerweb.com/Resources/Images/NoImageAvailableLarge.jpg'"
+                    style="max-height: 200px">
             </div>
             <div class="content">
                 <div class="header">{{notebook.nbname}}</div>
@@ -23,23 +24,23 @@
 
             <div class="extra content">
                 <span class="right floated">
-          <div class="ui labeled button" tabindex="0" (click)="like(notebook)" onclick="$(this).transition('pulse','50 ms');">
-            <!-- <div class="ui basic red button"> -->
-            <div [ngClass]="{'ui':true,'basic':!notebook.like,'button':true,'red':true}">
-              <i class="heart icon"></i> 
-            </div>
-            <a class="ui basic red left pointing label">
-              {{notebook.likecount}}
-            </a>
-          </div>
-        </span>
+                    <div class="ui labeled button" tabindex="0" (click)="like(notebook)" onclick="$(this).transition('pulse','50 ms');">
+                        <!-- <div class="ui basic red button"> -->
+                        <div [ngClass]="{'ui':true,'basic':!notebook.like,'button':true,'red':true}">
+                            <i class="heart icon"></i>
+                        </div>
+                        <a class="ui basic red left pointing label">
+                            {{notebook.likecount}}
+                        </a>
+                    </div>
+                </span>
                 <span>
-          <div class="ui black tag labels large">
-            <a class="ui label">
-              ฿{{notebook.price | number}}
-            </a>
-          </div>
-        </span>
+                    <div class="ui black tag labels large">
+                        <a class="ui label">
+                            ฿{{notebook.price | number}}
+                        </a>
+                    </div>
+                </span>
             </div>
         </div>
     </ng-container>

@@ -60,26 +60,28 @@
         <tr *ngFor="let notebook of notebookList">
             <td class="center aligned">
                 <div class="ui small image">
-                    <img src="{{notebook.img_url}}" width="150px" height="150px">
+                    <img src="{{notebook.img_url}}" onError="this.src = 'https://secure.hmepowerweb.com/Resources/Images/NoImageAvailableLarge.jpg'"
+                        width="150px" height="150px">
                 </div>
             </td>
             <td>
-                <h4 class="ui red header">
-                    <div class="ui red horizontal label">{{notebook.brand}} </div> {{notebook.nbname}}
+                <h4 class="ui red header ">
+                    <div class="ui red horizontal label ">{{notebook.brand}} </div> {{notebook.nbname}}
                 </h4>
                 {{notebook.cpu}}
-                <br> {{"RAM : " +notebook.ram + " GB"}}
+                <br> {{"RAM : " +notebook.ram + " GB "}}
                 <br> {{notebook.gpu}}
-                <br> {{"HDD : "+notebook.hdd + " TB"}}
-                <br> {{"Display : "+notebook.display + '"'}}
+                <br> {{"HDD : "+notebook.hdd + " TB "}}
+                <br> {{"Display : "+notebook.display + '" '}}
                 <br>
             </td>
             <td>
                 <div class="ui small basic icon buttons">
-                    <button class="ui button" data-tooltip="Delete" data-inverted="" (click)="setEditNotebook(notebook)" onclick="$('.ui.mini.modal.delete').modal('show');">
+                    <button class="ui button" data-tooltip="Delete" data-inverted="" (click)="setEditNotebook(notebook)" onclick="$('.ui.mini.modal.delete ').modal('show ');">
                         <i class="trash icon"></i>
                     </button>
-                    <button class="ui button" data-tooltip="Edit" (click)="setEditNotebook(notebook)" onclick="$('.ui.modal.edit').modal('show');" data-inverted="">
+                    <button class="ui button" data-tooltip="Edit" (click)="setEditNotebook(notebook)" onclick="$('.ui.modal.edit
+                        ').modal('show ');" data-inverted="">
                         <i class="write icon"></i>
                     </button>
                     <button class="ui button" data-tooltip="View detail page" data-inverted="">
@@ -101,98 +103,108 @@
 
         <div class="ui grid">
             <div class="eight wide column">
-                <div [ngClass]="{'ui':true,'right':true,'corner':true,'labeled':true,'input':true,'error':this.errorMsgNotebook.brand != ''}">
+                <div [ngClass]="{'ui ':true,'right ':true,'corner ':true,'labeled ':true,'input ':true,'error
+                        ':this.errorMsgNotebook.brand != ' '}">
                     <label for="brand" class="ui label">Brand</label>
                     <input type="text" id="brand" [(ngModel)]="toEditNotebook.brand" size="20" required>
-                    <div class="ui icon" *ngIf="this.errorMsgNotebook.brand != ''" [attr.data-tooltip]="this.errorMsgNotebook.brand" data-inverted="">
+                    <div class="ui icon" *ngIf="this.errorMsgNotebook.brand != ' '" [attr.data-tooltip]="this.errorMsgNotebook.brand" data-inverted="">
                         <i class="warning circle icon red"></i>
                     </div>
                 </div>
             </div>
             <div class="eight wide column">
-                <div [ngClass]="{'ui':true,'right':true,'corner':true,'labeled':true,'input':true,'error':this.errorMsgNotebook.nbname != ''}">
+                <div [ngClass]="{'ui ':true,'right ':true,'corner ':true,'labeled ':true,'input ':true,'error
+                        ':this.errorMsgNotebook.nbname != ' '}">
                     <label for="name" class="ui label">Name</label>
                     <input type="text" id="name" [(ngModel)]="toEditNotebook.nbname" size="25" required>
-                    <div class="ui icon" *ngIf="this.errorMsgNotebook.nbname != ''" [attr.data-tooltip]="this.errorMsgNotebook.nbname" data-inverted="">
+                    <div class="ui icon" *ngIf="this.errorMsgNotebook.nbname != ' '" [attr.data-tooltip]="this.errorMsgNotebook.nbname" data-inverted="">
                         <i class="warning circle icon red"></i>
                     </div>
                 </div>
             </div>
             <div class="eight wide column">
-                <div [ngClass]="{'ui':true,'right':true,'corner':true,'labeled':true,'input':true,'error':this.errorMsgNotebook.cpu != ''}">
+                <div [ngClass]="{'ui ':true,'right ':true,'corner ':true,'labeled ':true,'input ':true,'error
+                        ':this.errorMsgNotebook.cpu != ' '}">
                     <label for="cpu" class="ui label">CPU</label>
                     <input type="text" id="cpu" [(ngModel)]="toEditNotebook.cpu" size="30" required>
-                    <div class="ui icon" *ngIf="this.errorMsgNotebook.cpu != ''" [attr.data-tooltip]="this.errorMsgNotebook.cpu" data-inverted="">
+                    <div class="ui icon" *ngIf="this.errorMsgNotebook.cpu != ' '" [attr.data-tooltip]="this.errorMsgNotebook.cpu" data-inverted="">
                         <i class="warning circle icon red"></i>
                     </div>
                 </div>
             </div>
             <div class="eight wide column">
-                <div [ngClass]="{'ui':true,'right':true,'corner':true,'labeled':true,'input':true,'error':this.errorMsgNotebook.gpu != ''}">
+                <div [ngClass]="{'ui ':true,'right ':true,'corner ':true,'labeled ':true,'input ':true,'error
+                        ':this.errorMsgNotebook.gpu != ' '}">
                     <label for="gpu" class="ui label">GPU</label>
                     <input type="text" id="gpu" [(ngModel)]="toEditNotebook.gpu" size="25" required>
-                    <div class="ui icon" *ngIf="this.errorMsgNotebook.gpu != ''" [attr.data-tooltip]="this.errorMsgNotebook.gpu" data-inverted="">
+                    <div class="ui icon" *ngIf="this.errorMsgNotebook.gpu != ' '" [attr.data-tooltip]="this.errorMsgNotebook.gpu" data-inverted="">
                         <i class="warning circle icon red"></i>
                     </div>
                 </div>
             </div>
             <div class="eight wide column">
-                <div [ngClass]="{'ui':true,'right':true,'corner':true,'labeled':true,'input':true,'error':this.errorMsgNotebook.ram != ''}">
+                <div [ngClass]="{'ui ':true,'right ':true,'corner ':true,'labeled ':true,'input ':true,'error
+                        ':this.errorMsgNotebook.ram != ' '}">
                     <label for="ram" class="ui label">RAM</label>
                     <input type="text" id="ram" [(ngModel)]="toEditNotebook.ram" size="1" type="number" min="1" step="1" required>
-                    <div class="ui icon" *ngIf="this.errorMsgNotebook.ram != ''" [attr.data-tooltip]="this.errorMsgNotebook.ram" data-inverted="">
+                    <div class="ui icon" *ngIf="this.errorMsgNotebook.ram != ' '" [attr.data-tooltip]="this.errorMsgNotebook.ram" data-inverted="">
                         <i class="warning circle icon red"></i>
                     </div>
                 </div>
             </div>
             <div class="eight wide column">
-                <div [ngClass]="{'ui':true,'right':true,'corner':true,'labeled':true,'input':true,'error':this.errorMsgNotebook.hdd != ''}">
+                <div [ngClass]="{'ui ':true,'right ':true,'corner ':true,'labeled ':true,'input ':true,'error
+                        ':this.errorMsgNotebook.hdd != ' '}">
                     <label for="hdd" class="ui label">HDD</label>
                     <input type="text" id="hdd" [(ngModel)]="toEditNotebook.hdd" size="1" type="number" min="0.5" step="1" required>
-                    <div class="ui icon" *ngIf="this.errorMsgNotebook.hdd != ''" [attr.data-tooltip]="this.errorMsgNotebook.hdd" data-inverted="">
+                    <div class="ui icon" *ngIf="this.errorMsgNotebook.hdd != ' '" [attr.data-tooltip]="this.errorMsgNotebook.hdd" data-inverted="">
                         <i class="warning circle icon red"></i>
                     </div>
                 </div>
             </div>
             <div class="eight wide column">
-                <div [ngClass]="{'ui':true,'right':true,'corner':true,'labeled':true,'input':true,'error':this.errorMsgNotebook.os != ''}">
+                <div [ngClass]="{'ui ':true,'right ':true,'corner ':true,'labeled ':true,'input ':true,'error
+                        ':this.errorMsgNotebook.os != ' '}">
                     <label for="os" class="ui label">OS</label>
                     <input type="text" id="os" [(ngModel)]="toEditNotebook.os" size="20" required>
-                    <div class="ui icon" *ngIf="this.errorMsgNotebook.os != ''" [attr.data-tooltip]="this.errorMsgNotebook.os" data-inverted="">
+                    <div class="ui icon" *ngIf="this.errorMsgNotebook.os != ' '" [attr.data-tooltip]="this.errorMsgNotebook.os" data-inverted="">
                         <i class="warning circle icon red"></i>
                     </div>
                 </div>
             </div>
             <div class="eight wide column">
-                <div [ngClass]="{'ui':true,'right':true,'corner':true,'labeled':true,'input':true,'error':this.errorMsgNotebook.display != ''}">
+                <div [ngClass]="{'ui ':true,'right ':true,'corner ':true,'labeled ':true,'input ':true,'error
+                        ':this.errorMsgNotebook.display != ' '}">
                     <label for="display" class="ui label">Display</label>
                     <input type="text" id="displays" [(ngModel)]="toEditNotebook.display" size="7" type="number" min="0" step="1" required>
-                    <div class="ui icon" *ngIf="this.errorMsgNotebook.display != ''" [attr.data-tooltip]="this.errorMsgNotebook.display" data-inverted="">
+                    <div class="ui icon" *ngIf="this.errorMsgNotebook.display != ' '" [attr.data-tooltip]="this.errorMsgNotebook.display" data-inverted="">
                         <i class="warning circle icon red"></i>
                     </div>
                 </div>
             </div>
             <div class="eight wide column">
-                <div [ngClass]="{'ui':true,'right':true,'corner':true,'labeled':true,'input':true,'error':this.errorMsgNotebook.price != ''}">
+                <div [ngClass]="{'ui ':true,'right ':true,'corner ':true,'labeled ':true,'input ':true,'error
+                        ':this.errorMsgNotebook.price != ' '}">
                     <label for="price" class="ui label">Price</label>
                     <input type="text" id="price" [(ngModel)]="toEditNotebook.price" size="40" type="number" min="0" step="1" required>
-                    <div class="ui icon" *ngIf="this.errorMsgNotebook.price != ''" [attr.data-tooltip]="this.errorMsgNotebook.price" data-inverted="">
+                    <div class="ui icon" *ngIf="this.errorMsgNotebook.price != ' '" [attr.data-tooltip]="this.errorMsgNotebook.price" data-inverted="">
                         <i class="warning circle icon red"></i>
                     </div>
                 </div>
             </div>
             <div class="sixteen wide column">
-                <div [ngClass]="{'ui':true,'right':true,'corner':true,'labeled':true,'input':true,'error':this.errorMsgNotebook.img_url != ''}">
+                <div [ngClass]="{'ui ':true,'right ':true,'corner ':true,'labeled ':true,'input ':true,'error
+                        ':this.errorMsgNotebook.img_url != ' '}">
                     <label for="img_url" class="ui label">Image Url</label>
                     <input type="text" id="img_url" [(ngModel)]="toEditNotebook.img_url" size="70" required>
-                    <div class="ui icon" *ngIf="this.errorMsgNotebook.img_url != ''" [attr.data-tooltip]="this.errorMsgNotebook.img_url" data-inverted="">
+                    <div class="ui icon" *ngIf="this.errorMsgNotebook.img_url != ' '" [attr.data-tooltip]="this.errorMsgNotebook.img_url" data-inverted="">
                         <i class="warning circle icon red"></i>
                     </div>
                 </div>
             </div>
             <div class="sixteen wide column">
                 <div class="ui buttons right floated ">
-                    <button class="ui button" (click)="cancelEdit()" onclick="$('.ui.modal.edit').modal('hide');">Cancel</button>
+                    <button class="ui button" (click)="cancelEdit()" onclick="$('.ui.modal.edit ').modal('hide ');">Cancel</button>
                     <div class="or"></div>
                     <button class="ui positive button" (click)="editNotebook(toEditNotebook)">Save</button>
                 </div>
@@ -208,103 +220,114 @@
         <i class="plus icon"></i> Add new notebook</div>
     <div class="image content">
         <div class="ui fluid rounded image middle aligned spaced">
-            <img src="{{toEditNotebook.img_url || 'https://secure.hmepowerweb.com/Resources/Images/NoImageAvailableLarge.jpg'}} " alt="Please enter image url" width="300px" height="300px">
+            <img src="{{toEditNotebook.img_url || 'https://secure.hmepowerweb.com/Resources/Images/NoImageAvailableLarge.jpg '}} " alt="Please enter image url"
+                width="300px" height="300px">
         </div>
 
         <div class="ui grid">
             <div class="eight wide column">
-                <div [ngClass]="{'ui':true,'right':true,'corner':true,'labeled':true,'input':true,'error':this.errorMsgNotebook.brand != ''}">
+                <div [ngClass]="{'ui ':true,'right ':true,'corner ':true,'labeled ':true,'input ':true,'error
+                        ':this.errorMsgNotebook.brand != ' '}">
                     <label for="brand" class="ui label">Brand</label>
                     <input type="text" id="brand" [(ngModel)]="toEditNotebook.brand" size="20" required>
-                    <div class="ui icon" *ngIf="this.errorMsgNotebook.brand != ''" [attr.data-tooltip]="this.errorMsgNotebook.brand" data-inverted="">
+                    <div class="ui icon" *ngIf="this.errorMsgNotebook.brand != ' '" [attr.data-tooltip]="this.errorMsgNotebook.brand" data-inverted="">
                         <i class="warning circle icon red"></i>
                     </div>
                 </div>
             </div>
             <div class="eight wide column">
-                <div [ngClass]="{'ui':true,'right':true,'corner':true,'labeled':true,'input':true,'error':this.errorMsgNotebook.nbname != ''}">
+                <div [ngClass]="{'ui ':true,'right ':true,'corner ':true,'labeled ':true,'input ':true,'error
+                        ':this.errorMsgNotebook.nbname != ' '}">
                     <label for="name" class="ui label">Name</label>
                     <input type="text" id="name" [(ngModel)]="toEditNotebook.nbname" size="25" required>
-                    <div class="ui icon" *ngIf="this.errorMsgNotebook.nbname != ''" [attr.data-tooltip]="this.errorMsgNotebook.nbname" data-inverted="">
+                    <div class="ui icon" *ngIf="this.errorMsgNotebook.nbname != ' '" [attr.data-tooltip]="this.errorMsgNotebook.nbname" data-inverted="">
                         <i class="warning circle icon red"></i>
                     </div>
                 </div>
             </div>
             <div class="eight wide column">
-                <div [ngClass]="{'ui':true,'right':true,'corner':true,'labeled':true,'input':true,'error':this.errorMsgNotebook.cpu != ''}">
+                <div [ngClass]="{'ui ':true,'right ':true,'corner ':true,'labeled ':true,'input ':true,'error
+                        ':this.errorMsgNotebook.cpu != ' '}">
                     <label for="cpu" class="ui label">CPU</label>
                     <input type="text" id="cpu" [(ngModel)]="toEditNotebook.cpu" size="30" required>
-                    <div class="ui icon" *ngIf="this.errorMsgNotebook.cpu != ''" [attr.data-tooltip]="this.errorMsgNotebook.cpu" data-inverted="">
+                    <div class="ui icon" *ngIf="this.errorMsgNotebook.cpu != ' '" [attr.data-tooltip]="this.errorMsgNotebook.cpu" data-inverted="">
                         <i class="warning circle icon red"></i>
                     </div>
                 </div>
             </div>
             <div class="eight wide column">
-                <div [ngClass]="{'ui':true,'right':true,'corner':true,'labeled':true,'input':true,'error':this.errorMsgNotebook.gpu != ''}">
+                <div [ngClass]="{'ui ':true,'right ':true,'corner ':true,'labeled ':true,'input ':true,'error
+                        ':this.errorMsgNotebook.gpu != ' '}">
                     <label for="gpu" class="ui label">GPU</label>
                     <input type="text" id="gpu" [(ngModel)]="toEditNotebook.gpu" size="25" required>
-                    <div class="ui icon" *ngIf="this.errorMsgNotebook.gpu != ''" [attr.data-tooltip]="this.errorMsgNotebook.gpu" data-inverted="">
+                    <div class="ui icon" *ngIf="this.errorMsgNotebook.gpu != ' '" [attr.data-tooltip]="this.errorMsgNotebook.gpu" data-inverted="">
                         <i class="warning circle icon red"></i>
                     </div>
                 </div>
             </div>
             <div class="eight wide column">
-                <div [ngClass]="{'ui':true,'right':true,'corner':true,'labeled':true,'input':true,'error':this.errorMsgNotebook.ram != ''}">
+                <div [ngClass]="{'ui ':true,'right ':true,'corner ':true,'labeled ':true,'input ':true,'error
+                        ':this.errorMsgNotebook.ram != ' '}">
                     <label for="ram" class="ui label">RAM</label>
                     <input type="text" id="ram" [(ngModel)]="toEditNotebook.ram" size="1" type="number" min="1" step="1" required>
-                    <div class="ui icon" *ngIf="this.errorMsgNotebook.ram != ''" [attr.data-tooltip]="this.errorMsgNotebook.ram" data-inverted="">
+                    <div class="ui icon" *ngIf="this.errorMsgNotebook.ram != ' '" [attr.data-tooltip]="this.errorMsgNotebook.ram" data-inverted="">
                         <i class="warning circle icon red"></i>
                     </div>
                 </div>
             </div>
             <div class="eight wide column">
-                <div [ngClass]="{'ui':true,'right':true,'corner':true,'labeled':true,'input':true,'error':this.errorMsgNotebook.hdd != ''}">
+                <div [ngClass]="{'ui ':true,'right ':true,'corner ':true,'labeled ':true,'input ':true,'error
+                        ':this.errorMsgNotebook.hdd != ' '}">
                     <label for="hdd" class="ui label">HDD</label>
                     <input type="text" id="hdd" [(ngModel)]="toEditNotebook.hdd" size="1" type="number" min="0.5" step="1" required>
-                    <div class="ui icon" *ngIf="this.errorMsgNotebook.hdd != ''" [attr.data-tooltip]="this.errorMsgNotebook.hdd" data-inverted="">
+                    <div class="ui icon" *ngIf="this.errorMsgNotebook.hdd != ' '" [attr.data-tooltip]="this.errorMsgNotebook.hdd" data-inverted="">
                         <i class="warning circle icon red"></i>
                     </div>
                 </div>
             </div>
             <div class="eight wide column">
-                <div [ngClass]="{'ui':true,'right':true,'corner':true,'labeled':true,'input':true,'error':this.errorMsgNotebook.os != ''}">
+                <div [ngClass]="{'ui ':true,'right ':true,'corner ':true,'labeled ':true,'input ':true,'error
+                        ':this.errorMsgNotebook.os != ' '}">
                     <label for="os" class="ui label">OS</label>
                     <input type="text" id="os" [(ngModel)]="toEditNotebook.os" size="20" required>
-                    <div class="ui icon" *ngIf="this.errorMsgNotebook.os != ''" [attr.data-tooltip]="this.errorMsgNotebook.os" data-inverted="">
+                    <div class="ui icon" *ngIf="this.errorMsgNotebook.os != ' '" [attr.data-tooltip]="this.errorMsgNotebook.os" data-inverted="">
                         <i class="warning circle icon red"></i>
                     </div>
                 </div>
             </div>
             <div class="eight wide column">
-                <div [ngClass]="{'ui':true,'right':true,'corner':true,'labeled':true,'input':true,'error':this.errorMsgNotebook.display != ''}">
+                <div [ngClass]="{'ui ':true,'right ':true,'corner ':true,'labeled ':true,'input ':true,'error
+                        ':this.errorMsgNotebook.display != ' '}">
                     <label for="display" class="ui label">Display</label>
                     <input type="text" id="displays" [(ngModel)]="toEditNotebook.display" size="7" type="number" min="0" step="1" required>
-                    <div class="ui icon" *ngIf="this.errorMsgNotebook.display != ''" [attr.data-tooltip]="this.errorMsgNotebook.display" data-inverted="">
+                    <div class="ui icon" *ngIf="this.errorMsgNotebook.display != ' '" [attr.data-tooltip]="this.errorMsgNotebook.display" data-inverted="">
                         <i class="warning circle icon red"></i>
                     </div>
                 </div>
             </div>
             <div class="eight wide column">
-                <div [ngClass]="{'ui':true,'right':true,'corner':true,'labeled':true,'input':true,'error':this.errorMsgNotebook.price != ''}">
+                <div [ngClass]="{'ui ':true,'right ':true,'corner ':true,'labeled ':true,'input ':true,'error
+                        ':this.errorMsgNotebook.price != ' '}">
                     <label for="price" class="ui label">Price</label>
                     <input type="text" id="price" [(ngModel)]="toEditNotebook.price" size="40" type="number" min="0" step="1" required>
-                    <div class="ui icon" *ngIf="this.errorMsgNotebook.price != ''" [attr.data-tooltip]="this.errorMsgNotebook.price" data-inverted="">
+                    <div class="ui icon" *ngIf="this.errorMsgNotebook.price != ' '" [attr.data-tooltip]="this.errorMsgNotebook.price" data-inverted="">
                         <i class="warning circle icon red"></i>
                     </div>
                 </div>
             </div>
             <div class="sixteen wide column">
-                <div [ngClass]="{'ui':true,'right':true,'corner':true,'labeled':true,'input':true,'error':this.errorMsgNotebook.img_url != ''}">
+                <div [ngClass]="{'ui ':true,'right ':true,'corner ':true,'labeled ':true,'input ':true,'error
+                        ':this.errorMsgNotebook.img_url != ' '}">
                     <label for="img_url" class="ui label">Image Url</label>
                     <input type="text" id="img_url" [(ngModel)]="toEditNotebook.img_url" size="70" required>
-                    <div class="ui icon" *ngIf="this.errorMsgNotebook.img_url != ''" [attr.data-tooltip]="this.errorMsgNotebook.img_url" data-inverted="">
+                    <div class="ui icon" *ngIf="this.errorMsgNotebook.img_url != ' '" [attr.data-tooltip]="this.errorMsgNotebook.img_url" data-inverted="">
                         <i class="warning circle icon red"></i>
                     </div>
                 </div>
             </div>
             <div class="sixteen wide column">
                 <div class="ui buttons right floated ">
-                    <button class="ui button" (click)="cancelEdit()" onclick="$('.ui.modal.add').modal('hide');">Cancel</button>
+                    <button class="ui button" (click)="cancelEdit()" onclick="$('.ui.modal.add ').modal('hide ');">Cancel</button>
                     <div class="or"></div>
                     <button class="ui positive button" (click)=" addNoteBook()">Save</button>
                 </div>
