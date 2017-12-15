@@ -18,7 +18,9 @@ import { LoginService } from './services/login.service';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms'
 import { AuthguardGuard } from './authguard.guard';
-import { ManagementComponent } from './components/management/management.component'
+import { ManagementComponent } from './components/management/management.component';
+import { MyfavouritesComponent } from './components/myfavourites/myfavourites.component'
+
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -27,7 +29,8 @@ export const routes: Routes = [
   { path: 'aboutus', component: AboutusComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: SigninComponent },
-  { path: 'management', canActivate: [AuthguardGuard], component: ManagementComponent }
+  { path: 'management', canActivate: [AuthguardGuard], component: ManagementComponent },
+  { path: 'myfavourites', canActivate: [AuthguardGuard], component: MyfavouritesComponent }
 ]
 
 @NgModule({
@@ -40,7 +43,8 @@ export const routes: Routes = [
     SignupComponent,
     SigninComponent,
     NotebookComponent,
-    ManagementComponent
+    ManagementComponent,
+    MyfavouritesComponent
   ],
   imports: [
     BrowserModule,
@@ -51,4 +55,5 @@ export const routes: Routes = [
   providers: [GetNotebookService, UserManagementService, LoginService, AuthguardGuard, NotebookManagementService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+ }

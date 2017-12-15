@@ -10,6 +10,7 @@ export class UserManagementService {
 
   constructor(private http: Http) { }
 
+
   getAllUser() {
     return this.http.get("http://localhost:3000/user/getuser").map((res) => res.json());
   }

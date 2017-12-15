@@ -1,22 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { NotebookManagementService } from '../../services/notebook-management.service';
 import { LoginService } from '../../services/login.service';
-import { Title } from '@angular/platform-browser';
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-myfavourites',
+  templateUrl: './myfavourites.component.html',
+  styleUrls: ['./myfavourites.component.css']
 })
-export class HomeComponent implements OnInit {
-
-  constructor( private titleService: Title,private loginService: LoginService, private notebookManagementService: NotebookManagementService) { }
+export class MyfavouritesComponent implements OnInit {
+  constructor(private loginService: LoginService, private notebookManagementService: NotebookManagementService) { }
 
   private notebookList: Notebook[];
   ngOnInit() {
+    /*this.notebookManagementService.getNotebookList().subscribe((response) => {
+      this.notebookList = response;
+    })*/
     this.updateAllNotebook()
-    this.titleService.setTitle('NotebookValue');
   }
 
+  getUserLikeCount() {
+    let ret: number = 0
+    this.notebookList.forEach((element) => {
+      if (element.like)
+        ret++;
+    })
+    return ret;
+  }
   updateAllNotebook() {
     this.notebookManagementService.getNotebookList().subscribe((response) => {
       this.notebookList = response;
@@ -25,9 +33,9 @@ export class HomeComponent implements OnInit {
           element.likecount = response.likecount;
           this.notebookManagementService.getLikeUsers(element).subscribe((response) => {
             element.likeusers = response.usernames;
-            if(element.likeusers.indexOf(this.loginService.getUsername()) > -1){
+            if (element.likeusers.indexOf(this.loginService.getUsername()) > -1) {
               element.like = true
-            }else{
+            } else {
               element.like = false;
             }
           })
@@ -52,7 +60,7 @@ export class HomeComponent implements OnInit {
           }
           notebook.likecount = notebook.likeusers.length
         })
-  
+
       })
     }
 
@@ -74,6 +82,7 @@ interface Notebook {
   insert_date: string;
   likecount: number;
   likeusers: string[];
-  like:boolean;
+  like: boolean;
 }
+
 

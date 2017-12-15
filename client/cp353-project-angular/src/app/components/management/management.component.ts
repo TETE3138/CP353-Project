@@ -3,7 +3,7 @@ import { GetNotebookService } from '../../services/getnotebook.service';
 import { NotebookManagementService } from '../../services/notebook-management.service';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
-
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-management',
   templateUrl: './management.component.html',
@@ -11,7 +11,7 @@ import { LoginService } from '../../services/login.service';
 })
 export class ManagementComponent implements OnInit {
 
-  constructor(private loginService: LoginService, private notebookManagementService: NotebookManagementService, private router: Router) { }
+  constructor(private titleService: Title,private loginService: LoginService, private notebookManagementService: NotebookManagementService, private router: Router) { }
   private notebookList: Notebook[];
 
   private isActive: boolean;
@@ -25,6 +25,7 @@ export class ManagementComponent implements OnInit {
 
 
   ngOnInit() {
+    this.titleService.setTitle('NotebookValue');
     this.toEditNotebook = new Notebook();
     this.updateList();
 
