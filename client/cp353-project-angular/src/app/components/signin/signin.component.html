@@ -1,14 +1,7 @@
 <h1 class="ui header">Sign In</h1>
 
 <div class="ui error message" *ngIf="errorMessage">
-    <i class="close icon" onclick="$('.message .close')
-        .on('click', function() {
-          $(this)
-            .closest('.message')
-            .transition('fade')
-          ;
-        })
-      ;"></i>
+    <i class="close icon" onclick="$(this).closest('.message').transition('fade');"></i>
     <div class="header">
         <i class="frown icon big"></i> {{errorMessage}}
     </div>
@@ -29,5 +22,7 @@
 
 </form>
 <div class="field">
-    <label>Don't have an account? <a href="/signup">Sign up</a></label>
+    <label>Don't have an account?
+        <a href="/signup">Sign up</a>
+    </label>
 </div>
