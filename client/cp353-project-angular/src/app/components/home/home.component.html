@@ -3,7 +3,7 @@
   New Notebook
 </h1>
 <div class="ui four link cards">
-  <ng-container *ngFor="let notebook of (notebookList | slice:notebookList.length - 4)">
+  <ng-container *ngFor="let notebook of (notebookList | slice:0:4)">
     <div class="card">
       <div class="ui image">
         <div class="ui red ribbon label">
