@@ -7,14 +7,7 @@
 </div>
 
 <div class="ui negative message" *ngIf="this.loginService.isadmin == 0">
-    <i class="close icon" onclick="$('.message .close')
-    .on('click', function() {
-      $(this)
-        .closest('.message')
-        .transition('fade')
-      ;
-    })
-  ;"></i>
+    <i class="close icon" onclick="$(this).closest('.message').transition('fade');"></i>
     <div class="header">
         Access Denied
     </div>
@@ -86,8 +79,7 @@
                     <button class="ui button" data-tooltip="Delete" data-inverted="" (click)="setEditNotebook(notebook)" onclick="$('.ui.mini.modal.delete').modal('show');">
                         <i class="trash icon"></i>
                     </button>
-                    <button class="ui button" data-tooltip="Edit" (click)="setEditNotebook(notebook)" onclick="$('.ui.modal.edit').modal('show');"
-                        data-inverted="">
+                    <button class="ui button" data-tooltip="Edit" (click)="setEditNotebook(notebook)" onclick="$('.ui.modal.edit').modal('show');" data-inverted="">
                         <i class="write icon"></i>
                     </button>
                     <button class="ui button" data-tooltip="View detail page" data-inverted="">
@@ -216,8 +208,7 @@
         <i class="plus icon"></i> Add new notebook</div>
     <div class="image content">
         <div class="ui fluid rounded image middle aligned spaced">
-            <img src="{{toEditNotebook.img_url || 'https://secure.hmepowerweb.com/Resources/Images/NoImageAvailableLarge.jpg'}} " alt="Please enter image url"
-                width="300px" height="300px">
+            <img src="{{toEditNotebook.img_url || 'https://secure.hmepowerweb.com/Resources/Images/NoImageAvailableLarge.jpg'}} " alt="Please enter image url" width="300px" height="300px">
         </div>
 
         <div class="ui grid">
